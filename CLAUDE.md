@@ -184,9 +184,10 @@ Trois variantes, définies en fin d'`assets/site.css` — `.bouton-plein` (accen
 principale), `.bouton-vide` (contour), `.lien-action` (lien souligné). Dans les modales,
 les mêmes styles sont écrits en Tailwind faute de pouvoir toucher au JS qui les pilote.
 
-Deux exceptions assumées, demandées par le club : le **bouton WhatsApp flottant** (rond,
-vert) et les **deux boutons du hero** (pastilles à dégradé), le hero étant hors périmètre
-de la refonte. Tout le reste est à l'équerre.
+Une seule exception assumée, demandée par le club : le **bouton WhatsApp flottant** (rond,
+vert). Tout le reste est à l'équerre — y compris depuis le 02/10/2026 le badge « Division 2
+Nationale » et les deux boutons du hero (angles nets désormais ; ils gardent leur dégradé
+et le hero reste par ailleurs hors périmètre de la refonte).
 
 **Le bouton « S'abonner à l'agenda » vit dans la modale des horaires**, pas sur la fiche
 d'équipe : on s'abonne une fois le calendrier sous les yeux. Il reste piloté par
