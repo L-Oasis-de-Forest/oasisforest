@@ -1,7 +1,9 @@
 # Union Oasis Forest — site du club
 
 Site vitrine one-page d'un club de futsal bruxellois (Forest, 1190).
-Hébergé sur **GitHub Pages** depuis la branche principale du dépôt `tristede/oasisforest`.
+Hébergé sur **GitHub Pages** depuis la branche `main` du dépôt `L-Oasis-de-Forest/oasisforest`
+(organisation GitHub du club, dépôt public — anciennement `tristede/oasisforest`), servi sur
+le domaine **oasisforest.be** via le fichier `CNAME`.
 
 ## Identité légale (à ne pas confondre)
 
@@ -98,8 +100,10 @@ aucune entité enregistrée. Ne pas réintroduire cette formulation.
   ÉDITABLES »), avec dégradation propre si le JSON manque (image de secours pour le hero,
   section masquée pour les sponsors, état vide pour la galerie).
 - **Chemins d'images** : le CMS écrit des chemins absolus `/img/…`, mais le rendu les
-  convertit en relatifs (`toRel()` retire le `/` initial) — indispensable tant qu'il n'y a
-  pas de `CNAME` (GitHub Pages sert alors sur le sous-chemin `/oasisforest/`).
+  convertit en relatifs (`toRel()` retire le `/` initial). Depuis l'ajout du `CNAME`, le site
+  est servi à la racine d'`oasisforest.be` et ce n'est plus strictement nécessaire, mais on
+  le garde : les chemins relatifs fonctionnent aussi sur un sous-chemin (`/oasisforest/` sans
+  domaine, fork, prévisualisation locale).
 - **Filtres de la galerie** : la liste des catégories (`data/categories.json`) est éditable
   via `/admin`, mais le champ « Catégorie » d'une photo reste un champ **texte libre**
   (widget `select` impossible : Sveltia CMS ne peut pas lire dynamiquement les options
