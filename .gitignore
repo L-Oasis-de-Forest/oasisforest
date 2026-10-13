@@ -6,3 +6,6 @@
 
 # Documents internes du club (jamais publiés sur GitHub Pages)
 docs-internes/
+
+# Dossier produit par .github/build-site.sh
+_site/
