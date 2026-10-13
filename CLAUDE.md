@@ -235,8 +235,10 @@ nouveau rapport fourni par le club.
   qu'un renvoi vers `a-propos.html`. Répéter les dates faisait doublon avec la ligne du temps.
 - **« Notre impact » vit sur `partenaires.html`**, pas sur `a-propos.html` : ces chiffres
   (BX1, +250 spectateurs, +40 matchs) servent d'argument commercial, pas de bilan associatif.
-- **Pas de « semaine type » pour la D2 ni les U21** : leurs horaires bougent trop en cours
-  de saison, on renvoie au calendrier RBFA. Les U15-U17 et le Baby Futsal la gardent.
+- **Pas de « semaine type » pour la D2** : ses horaires bougent trop en cours de saison, on
+  renvoie au calendrier RBFA. Les U21 n'affichent que leur entraînement fixe (lundi 19h30,
+  Primeur) en tête de modale, avant les matchs RBFA. Les U15-U17 (lundi/vendredi 18h à Bempt,
+  matchs le samedi) et le Baby Futsal gardent leur semaine type (mise à jour du 13/10/2026).
 - **Ordre des équipes sur `equipes.html` : du plus jeune à l'équipe première**, l'encart
   « Classements officiels » fermant la page juste après la D2.
 - **Mentions légales discrètes** : deux lignes en `text-[11px]` tout en bas du pied de

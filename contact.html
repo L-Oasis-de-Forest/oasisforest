@@ -23,10 +23,10 @@
     <meta property="og:site_name" content="Union Oasis Forest">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-    <script src="assets/tailwind-config.js?v=202609161900"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202609161900">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131530">
+    <script src="assets/tailwind-config.js?v=202610131530"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131530">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
 
@@ -126,10 +126,16 @@
                         <i class="fab fa-waze text-base"></i> Waze
                     </a>
                 </div>
-                <div class="w-full h-full overflow-hidden bg-night/50 relative">
+                <div data-carte-voile class="absolute inset-0 z-20 bg-night flex flex-col items-center justify-center gap-4 px-6 text-center">
+                        <p class="text-slate-300 text-sm max-w-xs leading-relaxed">La carte est fournie par Google. Elle ne se charge que si vous le demandez.</p>
+                        <button type="button" data-carte-charger class="bouton-plein">Afficher la carte</button>
+                        <p class="text-slate-400 text-xs"><a href="https://maps.google.com/?q=Bd+de+la+Deuxi%C3%A8me+Arm%C3%A9e+Britannique+600,+1190+Forest" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Itinéraire Google Maps</a> · <a href="https://www.waze.com/ul?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&navigate=yes" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Waze</a></p>
+                        <p class="text-slate-500 text-[11px] max-w-xs">Google peut alors déposer des cookies. <a href="confidentialite.html" class="underline hover:text-slate-300">En savoir plus</a></p>
+                    </div>
+                    <div class="w-full h-full overflow-hidden bg-night/50 relative">
                     <iframe
                         title="Localisation du complexe sportif sur la carte"
-                        src="https://maps.google.com/maps?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        data-src="https://maps.google.com/maps?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%" height="100%"
                         style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%); pointer-events: none;"
                         allowfullscreen="" loading="lazy"
@@ -188,6 +194,8 @@
                 </p>
                 <p class="text-[11px] text-slate-600">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
+                    · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
+                    <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
                 </p>
             </div>
         </div>
@@ -200,6 +208,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202609161900"></script>
+    <script src="assets/commun.js?v=202610131530"></script>
+    <script src="assets/mesure.js?v=202610131530"></script>
+    <script src="assets/cookies.js?v=202610131530"></script>
 </body>
 </html>

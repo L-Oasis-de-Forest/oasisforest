@@ -3,3 +3,6 @@
 
 # Configuration locale de l'outillage (serveur de prévisualisation, etc.)
 .claude/
+
+# Documents internes du club (jamais publiés sur GitHub Pages)
+docs-internes/

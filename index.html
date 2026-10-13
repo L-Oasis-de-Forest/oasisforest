@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Union Oasis Forest - L'excellence du futsal bruxellois. De notre équipe première en Division 2 Nationale jusqu'à nos équipes de jeunes.">
-    <title>Union Oasis Forest</title>
+    <title>Union Oasis Forest | Club de futsal à Forest, Bruxelles</title>
+    <link rel="canonical" href="https://oasisforest.be/">
 
     <!-- Icone d'onglet : SVG pour les navigateurs qui le supportent (logo blanc seul,
          pensé pour un chrome de navigateur sombre). PNG en repli sur fond sombre
@@ -84,10 +85,10 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-    <script src="assets/tailwind-config.js?v=202609161900"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202609161900">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131530">
+    <script src="assets/tailwind-config.js?v=202610131530"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131530">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
 
@@ -396,10 +397,16 @@
                             <i class="fab fa-waze text-base"></i> Waze
                         </a>
                     </div>
+                    <div data-carte-voile class="absolute inset-0 z-20 bg-night flex flex-col items-center justify-center gap-4 px-6 text-center">
+                        <p class="text-slate-300 text-sm max-w-xs leading-relaxed">La carte est fournie par Google. Elle ne se charge que si vous le demandez.</p>
+                        <button type="button" data-carte-charger class="bouton-plein">Afficher la carte</button>
+                        <p class="text-slate-400 text-xs"><a href="https://maps.google.com/?q=Bd+de+la+Deuxi%C3%A8me+Arm%C3%A9e+Britannique+600,+1190+Forest" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Itinéraire Google Maps</a> · <a href="https://www.waze.com/ul?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&navigate=yes" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Waze</a></p>
+                        <p class="text-slate-500 text-[11px] max-w-xs">Google peut alors déposer des cookies. <a href="confidentialite.html" class="underline hover:text-slate-300">En savoir plus</a></p>
+                    </div>
                     <div class="w-full h-full overflow-hidden bg-night/50 relative">
                         <iframe
                             title="Localisation du complexe sportif sur la carte"
-                            src="https://maps.google.com/maps?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            data-src="https://maps.google.com/maps?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&t=&z=15&ie=UTF8&iwloc=&output=embed"
                             width="100%" height="100%"
                             style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%); pointer-events: none;"
                             allowfullscreen="" loading="lazy"
@@ -459,6 +466,8 @@
                 </p>
                 <p class="text-[11px] text-slate-600">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
+                    · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
+                    <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
                 </p>
             </div>
         </div>
@@ -783,10 +792,10 @@
                 iconBg: 'bg-gradient-to-br from-sky-500 to-blue-700',
                 desc: "L'antichambre de la Division 2. Nos espoirs s'y forment et se préparent aux exigences du haut niveau senior. C'est un tremplin crucial pour l'intégration de nos jeunes talents dans l'équipe première.",
                 rbfaUrl: 'https://www.rbfa.be/fr/club/9955/equipe/369102/calendrier',
+                // Un seul entraînement fixe ; les matchs viennent du calendrier RBFA (voir
+                // openTeamModal, qui place cet entraînement avant la liste des matchs).
                 schedule: [
-                    { day: 'MAR', type: 'Entraînement Commun D2', time: '20:00', location: 'Complexe Forest', isMatch: false },
-                    { day: 'JEU', type: 'Entraînement Spécifique', time: '20:00', location: 'Complexe Forest', isMatch: false },
-                    { day: 'W-E', type: 'Match Championnat', time: 'À confirmer', location: 'Selon calendrier RBFA', isMatch: true }
+                    { day: 'LUN', type: 'Entraînement', time: '19:30', location: 'Primeur', isMatch: false }
                 ]
             },
             // U15 et U17 fusionnés en un seul groupe : une seule fiche, un seul calendrier.
@@ -797,10 +806,11 @@
                 iconClass: 'fas fa-fire-flame-curved',
                 iconBg: 'bg-gradient-to-br from-cyan-500 to-sky-600',
                 desc: "Le cœur de notre projet jeunes, à l'âge où le Futsal de compétition prend toute sa dimension. Nous combinons la technique pure du Futsal (semelle, jeu court) et les fondamentaux du grand football, avec un accent sur l'intelligence tactique de déplacement, la rapidité d'exécution en espace réduit et le développement athlétique spécifique.",
-                // Horaires de la saison pas encore arrêtés (voir Baby Futsal).
                 schedule: [
-                    { day: '—', type: 'Entraînements', time: 'À définir', location: 'Complexe Forest', isMatch: false },
-                    { day: '—', type: 'Plateau / Match', time: 'À définir', location: 'Tournoi Provincial', isMatch: true }
+                    { day: 'LUN', type: 'U15 · Entraînement', time: '18:00', location: 'Bempt', isMatch: false },
+                    { day: 'VEN', type: 'U17 · Entraînement', time: '18:00', location: 'Bempt', isMatch: false },
+                    { day: 'SAM', type: 'U17 · Match', time: '15:00', location: 'Selon calendrier', isMatch: true },
+                    { day: 'SAM', type: 'U15 · Match à domicile', time: '16:00', location: 'Bempt', isMatch: true }
                 ]
             },
             'u3': {
@@ -810,10 +820,8 @@
                 iconClass: 'fas fa-child',
                 iconBg: 'bg-gradient-to-br from-emerald-400 to-teal-500',
                 desc: "Une initiation au sport en immersion néerlandophone, dans un cadre bienveillant et familial. L'objectif n'est pas la compétition, mais le développement de la motricité, l'apprentissage de l'équilibre, le vivre-ensemble et les premiers contacts ludiques avec le ballon.",
-                // Horaires de la saison pas encore arrêtés : on n'affiche pas de jour
-                // ni d'heure tant qu'ils ne sont pas confirmés par le club.
                 schedule: [
-                    { day: '—', type: 'Séance Éveil & Psychomotricité', time: 'À définir', location: 'Complexe Forest', isMatch: false }
+                    { day: 'SAM', type: 'Séance Éveil & Psychomotricité', time: '14:00 - 15:00', location: 'Bempt', isMatch: false }
                 ]
             }
         };
@@ -931,8 +939,8 @@
             if (id === 'div2' || id === 'u21') {
                 // Équipes de haut niveau : pas d'inscription directe, mais Horaires ET RBFA
                 // affichés ensemble - uniquement les vrais matchs du calendrier RBFA importé
-                // (voir l'onglet Calendrier de l'outil admin), pas d'entraînement pour ces
-                // deux équipes.
+                // (voir l'onglet Calendrier de l'outil admin) ; seuls les U21 ajoutent leur
+                // entraînement du lundi en tête.
                 waBtn.classList.add('hidden'); waBtn.classList.remove('flex');
                 calBtn.classList.remove('hidden'); calBtn.classList.add('flex');
                 rbfaBtn.classList.remove('hidden'); rbfaBtn.classList.add('flex');
@@ -942,7 +950,8 @@
 
                 const matches = await getTeamMatchesFromEvenements(id);
                 const calContent = document.getElementById('modal-cal-content');
-                calContent.innerHTML = buildScheduleUI(matches);
+                // Les U21 ont un entraînement fixe (data.schedule) en tête de liste ; la D2 n'en a pas ici.
+                calContent.innerHTML = buildScheduleUI(id === 'u21' ? [...data.schedule, ...matches] : matches);
                 // Reset du scroll de la zone calendrier à chaque (ré)ouverture : le prochain
                 // match est toujours en tête de liste (voir getTeamMatchesFromEvenements),
                 // un ancien défilement laissé par une ouverture précédente ne doit pas le
@@ -1879,44 +1888,7 @@
         });
     </script>
 
-    <!-- Mesure d'audience minimale (visites + clics sur quelques boutons clés), lue
-         depuis l'onglet "Stats" de l'outil admin du club. Agrégats par jour uniquement
-         côté serveur : pas d'IP, pas de cookie, pas d'identifiant visiteur — rien à
-         faire fonctionner si le navigateur bloque la requête (ad-blocker, offline...). -->
-    <script>
-        (function () {
-            const TRACK_ENDPOINT = 'https://oasisforest-admin-tool.tristederk.workers.dev/api/track';
-            const device = window.innerWidth < 768 ? 'Mobile' : 'Desktop';
-
-            function send(body) {
-                try {
-                    const payload = JSON.stringify({ device, ...body });
-                    if (navigator.sendBeacon) {
-                        navigator.sendBeacon(TRACK_ENDPOINT, new Blob([payload], { type: 'application/json' }));
-                    } else {
-                        fetch(TRACK_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true }).catch(() => {});
-                    }
-                } catch (e) { /* silencieux : la mesure ne doit jamais impacter le site */ }
-            }
-
-            send({ type: 'pageview', path: location.pathname });
-
-            document.addEventListener('click', (e) => {
-                const el = e.target.closest('[data-track]');
-                if (el) send({ type: 'click', element: el.getAttribute('data-track') });
-            });
-
-            // Temps passé sur la page, envoyé une seule fois à la fermeture/sortie.
-            // "pagehide" plutôt que "beforeunload" : plus fiable sur mobile (Safari
-            // notamment, y compris avec le cache arrière/avant du navigateur).
-            const loadedAt = performance.now();
-            let durationSent = false;
-            window.addEventListener('pagehide', () => {
-                if (durationSent) return;
-                durationSent = true;
-                send({ type: 'duration', seconds: Math.round((performance.now() - loadedAt) / 1000) });
-            });
-        })();
-    </script>
+    <script src="assets/mesure.js?v=202610131530"></script>
+    <script src="assets/cookies.js?v=202610131530"></script>
 </body>
 </html>
