@@ -86,11 +86,12 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
-    <script src="assets/tailwind-config.js?v=202610131800"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
+    <script src="assets/tailwind-config.js?v=202610131900"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131900">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
 
     <!-- Logo du club declare une seule fois, reutilisable via <use href="#club-logo"> -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -158,6 +159,7 @@
 
 
     <!-- Hero Section (padding top ajusté) -->
+    <main id="contenu">
     <header id="home" class="pt-20 pb-20 md:pt-56 md:pb-32 flex items-center min-h-screen relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col items-center">
             
@@ -295,7 +297,7 @@
                         <h3 class="titre-brut text-white text-xl md:text-3xl group-hover:text-accent transition-colors">Baby Futsal</h3>
                     </div>
                     <p class="hidden md:block text-slate-500 text-sm font-light">Éveil en immersion néerlandophone, hors compétition.</p>
-                    <span class="text-slate-600 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
+                    <span class="text-slate-500 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
                 </div>
                 <div data-team="u15_u17" class="filet pt-6 pb-6 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_2fr_auto] gap-4 md:gap-8 items-center cursor-pointer group reveal team-card-reveal">
                     <div>
@@ -303,7 +305,7 @@
                         <h3 class="titre-brut text-white text-xl md:text-3xl group-hover:text-accent transition-colors">Futsal</h3>
                     </div>
                     <p class="hidden md:block text-slate-500 text-sm font-light">Le cœur du projet jeunes, en compétition provinciale.</p>
-                    <span class="text-slate-600 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
+                    <span class="text-slate-500 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
                 </div>
                 <div data-team="u21" class="filet pt-6 pb-6 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_2fr_auto] gap-4 md:gap-8 items-center cursor-pointer group reveal team-card-reveal">
                     <div>
@@ -311,7 +313,7 @@
                         <h3 class="titre-brut text-white text-xl md:text-3xl group-hover:text-accent transition-colors">Espoirs</h3>
                     </div>
                     <p class="hidden md:block text-slate-500 text-sm font-light">L'antichambre de la Division 2.</p>
-                    <span class="text-slate-600 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
+                    <span class="text-slate-500 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
                 </div>
                 <div data-team="div2" class="filet pt-6 pb-6 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_2fr_auto] gap-4 md:gap-8 items-center cursor-pointer group reveal team-card-reveal">
                     <div>
@@ -319,7 +321,7 @@
                         <h3 class="titre-brut text-white text-xl md:text-3xl group-hover:text-accent transition-colors">Équipe première</h3>
                     </div>
                     <p class="hidden md:block text-slate-500 text-sm font-light">L'équipe fanion, au niveau national.</p>
-                    <span class="text-slate-600 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
+                    <span class="text-slate-500 group-hover:text-accent transition-colors font-black text-[10px] tracking-[0.16em] uppercase whitespace-nowrap">Horaires</span>
                 </div>
 
             <div class="filet pt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -417,6 +419,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- PIED DE PAGE — bloc identique sur toutes les pages du site.
          Les deux dernières lignes (dénomination légale, n° d'entreprise, siège, e-mail,
          domaine) sont exigées sur chaque page par la validation Google for Nonprofits. -->
@@ -458,13 +462,13 @@
             </div>
 
             <div class="filet pt-6 space-y-1.5">
-                <p class="text-[11px] leading-relaxed text-slate-600">
+                <p class="text-[11px] leading-relaxed text-slate-400">
                     L'Oasis de Forest ASBL · Siège social : Rue du Croissant 85, 1190 Forest, Belgique ·
                     Numéro d'entreprise (BCE) 0867.614.619 ·
                     <a href="mailto:union@oasisforest.be" class="hover:text-slate-400 transition-colors">union@oasisforest.be</a> ·
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
-                <p class="text-[11px] text-slate-600">
+                <p class="text-[11px] text-slate-400">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
@@ -1888,7 +1892,7 @@
         });
     </script>
 
-    <script src="assets/mesure.js?v=202610131800"></script>
-    <script src="assets/cookies.js?v=202610131800"></script>
+    <script src="assets/mesure.js?v=202610131900"></script>
+    <script src="assets/cookies.js?v=202610131900"></script>
 </body>
 </html>

@@ -24,11 +24,12 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
-    <script src="assets/tailwind-config.js?v=202610131800"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
+    <script src="assets/tailwind-config.js?v=202610131900"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131900">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
 
     <!-- Fond animé -->
     <div class="bg-glow">
@@ -94,7 +95,7 @@
         </div>
     </header>
 
-    <main class="pb-16 relative z-10">
+    <main id="contenu" class="pb-16 relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <section class="reveal filet pt-8 mb-12">
                 <div class="flex items-baseline gap-5 mb-5">
@@ -135,6 +136,7 @@
                         <tbody>
                             <tr><th>Inscription d'un jeune</th><td>Nom, prénom, date de naissance et catégorie du jeune ; nom, téléphone et e-mail de la personne de contact (et d'un second contact facultatif) ; montant déclaré payé ; preuve de paiement facultative. Les informations sont fournies par le représentant légal.<br><span class="text-slate-400">Pourquoi : gérer l'affiliation, les cotisations et joindre la famille. Base : exécution de l'inscription demandée.</span></td></tr>
                             <tr><th>Annonces du club</th><td>Votre adresse e-mail, uniquement si vous cochez la case.<br><span class="text-slate-400">Pourquoi : envoyer des annonces du club. Base : votre consentement, retirable à tout moment (lien de désinscription dans chaque message ou simple e-mail).</span></td></tr>
+                            <tr><th>Droit à l'image</th><td>Votre choix (site, réseaux sociaux, supports du club, ou refus), le nom tapé comme signature, la date et la version du texte accepté, enregistrés dans la fiche du jeune. Les images elles-mêmes (photos, vidéos) sont décrites plus bas.<br><span class="text-slate-400">Pourquoi : savoir qui peut apparaître où, et pouvoir le prouver. Base : le consentement du représentant légal, retirable à tout moment.</span></td></tr>
                             <tr><th>Contact partenaires</th><td>Prénom, nom, e-mail, message et pièce jointe facultative.<br><span class="text-slate-400">Pourquoi : répondre à votre demande. Base : votre demande et notre intérêt légitime à y répondre.</span></td></tr>
                             <tr><th>Mesure d'audience</th><td>Pages vues et clics comptés par jour : page, type d'appareil, provenance (site référent) et durée de visite. Aucune adresse IP conservée, aucun cookie, aucun identifiant de visiteur.<br><span class="text-slate-400">Pourquoi : savoir si le site est utile. Base : intérêt légitime.</span></td></tr>
                         </tbody>
@@ -155,6 +157,7 @@
                         <li><strong class="text-white">Cloudflare</strong> : réception des formulaires et stockage des statistiques agrégées ;</li>
                         <li><strong class="text-white">Brevo</strong> (France) : envoi des e-mails de confirmation et des annonces ;</li>
                         <li><strong class="text-white">Google Workspace</strong> : boîtes mail du club ;</li>
+                        <li><strong class="text-white">Instagram, Facebook et TikTok</strong> : uniquement les images que vous avez autorisées pour les réseaux sociaux ;</li>
                         <li><strong class="text-white">GitHub</strong> : hébergement des pages, qui peut journaliser l'adresse IP des visiteurs.</li>
                     </ul>
                     <p>Certains sont situés aux États-Unis : les transferts reposent sur les garanties prévues par le RGPD (clauses contractuelles types ou cadre transatlantique de protection des données).</p>
@@ -171,6 +174,7 @@
                         <li>Fiche d'affiliation : durée de l'affiliation, puis deux ans au plus.</li>
                         <li>Justificatifs comptables (cotisations) : sept ans, obligation légale.</li>
                         <li>Annonces : jusqu'à votre désinscription.</li>
+                        <li>Choix de droit à l'image : durée de l'affiliation, puis deux ans. En cas de retrait, nous gardons seulement la trace du retrait.</li>
                         <li>Demandes partenaires : deux ans après le dernier échange.</li>
                         <li>Statistiques : agrégées et anonymes, treize mois.</li>
                     </ul>
@@ -200,7 +204,16 @@
                     <h2 class="titre-brut text-white text-2xl md:text-3xl">Images des jeunes</h2>
                 </div>
                 <div class="text-slate-300 leading-relaxed space-y-4 max-w-3xl">
-                    <p>Les photos de jeunes ne sont publiées qu'avec l'autorisation écrite de leur représentant légal. Elle peut être retirée à tout moment : écrivez-nous, la photo est retirée du site dans les plus brefs délais et des réseaux sociaux du club.</p>
+                    <p>Le club prend des photos et des vidéos pendant les entraînements, les matchs et les événements. Un jeune n'apparaît de façon reconnaissable que si son représentant légal l'a autorisé, par écrit.</p>
+                    <p>L'autorisation se donne dans le formulaire d'inscription ou sur la page dédiée aux jeunes déjà inscrits. Elle comporte trois choix indépendants, tous décochés par défaut :</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>publication sur ce site ;</li>
+                        <li>publication sur les réseaux sociaux du club (Instagram, Facebook, TikTok) ;</li>
+                        <li>usage dans les supports du club : affiches, dossier de sponsoring, presse locale.</li>
+                    </ul>
+                    <p>Refuser, ou ne rien cocher, n'a aucune conséquence sur l'inscription ni sur la participation du jeune : le club veille alors à ne pas le publier de façon reconnaissable (visage non visible ou flouté). Aucun nom complet, adresse ou numéro de téléphone n'accompagne une photo ; au plus un prénom dans une légende de match, avec accord.</p>
+                    <p>Le représentant légal signe en tapant son nom ; la date et la version du texte sont enregistrées. Pour un joueur majeur, c'est le joueur lui-même qui décide.</p>
+                    <p><strong class="text-white">Retirer l'autorisation</strong> : à tout moment, sans motif, en écrivant à <a href="mailto:union@oasisforest.be" class="text-accent hover:underline">union@oasisforest.be</a>. Le club retire les images concernées du site et de ses réseaux dans les plus brefs délais. Il ne peut pas effacer ce qui a déjà été copié ou partagé par des tiers.</p>
                 </div>
             </section>
 
@@ -215,7 +228,7 @@
                 </div>
             </section>
 
-            <p class="text-slate-500 text-xs">Dernière mise à jour : 13 octobre 2026.</p>
+            <p class="text-slate-500 text-xs">Dernière mise à jour : octobre 2026.</p>
         </div>
     </main>
 
@@ -260,13 +273,13 @@
             </div>
 
             <div class="filet pt-6 space-y-1.5">
-                <p class="text-[11px] leading-relaxed text-slate-600">
+                <p class="text-[11px] leading-relaxed text-slate-400">
                     L'Oasis de Forest ASBL · Siège social : Rue du Croissant 85, 1190 Forest, Belgique ·
                     Numéro d'entreprise (BCE) 0867.614.619 ·
                     <a href="mailto:union@oasisforest.be" class="hover:text-slate-400 transition-colors">union@oasisforest.be</a> ·
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
-                <p class="text-[11px] text-slate-600">
+                <p class="text-[11px] text-slate-400">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
@@ -282,8 +295,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610131800"></script>
-    <script src="assets/mesure.js?v=202610131800"></script>
-    <script src="assets/cookies.js?v=202610131800"></script>
+    <script src="assets/commun.js?v=202610131900"></script>
+    <script src="assets/mesure.js?v=202610131900"></script>
+    <script src="assets/cookies.js?v=202610131900"></script>
 </body>
 </html>

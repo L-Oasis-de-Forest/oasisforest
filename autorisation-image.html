@@ -25,9 +25,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
-    <script src="assets/tailwind-config.js?v=202610131800"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
+    <script src="assets/tailwind-config.js?v=202610131900"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131900">
     <style>
         /* Formulaire d'inscription — même grammaire que le reste du site : angles vifs,
            filets, capitales serrées. Styles propres à cette page, d'où leur place ici. */
@@ -70,6 +70,7 @@
     </style>
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
 
     <!-- Fond animé -->
     <div class="bg-glow">
@@ -125,6 +126,7 @@
     </div>
 
 
+    <main id="contenu">
     <header class="pt-20 lg:pt-44 pb-8 relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8">Droit<br>à l'image</h1>
@@ -163,7 +165,7 @@
                         Le club prend des photos et des vidéos pendant les entraînements, matchs et événements.
                         Chaque case est indépendante et vous pouvez tout refuser : cela ne change rien à la participation du jeune.
                         Aucun nom complet n'accompagne une photo. Vous pouvez retirer l'autorisation à tout moment en écrivant à union@oasisforest.be.
-                        <a href="confidentialite.html" target="_blank" class="underline hover:text-white">Détails et droits</a>.
+                        <a href="confidentialite.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Détails et droits</a>.
                     </p>
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" name="droitSite" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
@@ -208,6 +210,71 @@
             </div>
         </div>
     </section>
+
+    </main>
+
+    <!-- PIED DE PAGE — bloc identique sur toutes les pages du site.
+         Les deux dernières lignes (dénomination légale, n° d'entreprise, siège, e-mail,
+         domaine) sont exigées sur chaque page par la validation Google for Nonprofits. -->
+    <footer class="filet relative z-10 mt-12 pt-12 pb-10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8 mb-12">
+
+                <div>
+                    <a href="index.html" aria-label="Union Oasis Forest - accueil" class="inline-flex items-center gap-4 group mb-5">
+                        <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-6 w-auto opacity-90">
+                        <span class="font-black text-white text-sm tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
+                    </a>
+                </div>
+
+                <div class="md:text-right">
+                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Pages</h2>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-slate-400 hover:text-accent transition-colors">Accueil</a></li>
+                        <li><a href="a-propos.html" class="text-slate-400 hover:text-accent transition-colors">Le club</a></li>
+                        <li><a href="equipes.html" class="text-slate-400 hover:text-accent transition-colors">Nos équipes</a></li>
+                        <li><a href="galerie.html" class="text-slate-400 hover:text-accent transition-colors">Galerie</a></li>
+                        <li><a href="partenaires.html" class="text-slate-400 hover:text-accent transition-colors">Partenaires</a></li>
+                        <li><a href="contact.html" class="text-slate-400 hover:text-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Contact</h2>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a></li>
+                        <li><a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">+32 477 02 20 21</a></li>
+                        <li class="flex gap-4 pt-2">
+                            <a href="https://www.instagram.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-accent transition-colors">Instagram</a>
+                            <a href="https://www.tiktok.com/@oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-accent transition-colors">TikTok</a>
+                            <a href="https://www.facebook.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-accent transition-colors">Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="filet pt-6 space-y-1.5">
+                <p class="text-[11px] leading-relaxed text-slate-400">
+                    L'Oasis de Forest ASBL · Siège social : Rue du Croissant 85, 1190 Forest, Belgique ·
+                    Numéro d'entreprise (BCE) 0867.614.619 ·
+                    <a href="mailto:union@oasisforest.be" class="hover:text-slate-400 transition-colors">union@oasisforest.be</a> ·
+                    <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
+                </p>
+                <p class="text-[11px] text-slate-400">
+                    &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
+                    · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
+                    <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" data-track="WhatsApp (flottant)" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-[#25D366] text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:bg-[#20bd5a] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300 z-50 group" aria-label="Nous contacter sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="absolute right-[110%] top-1/2 -translate-y-1/2 bg-night text-white text-xs font-bold py-2.5 px-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-white/10 pointer-events-none shadow-xl">
+            Une question ? Discutons !
+        </span>
+    </a>
 
     <script>
         // Envoi vers l'outil admin (Worker Cloudflare), qui retrouve la fiche dans Notion.
@@ -277,9 +344,9 @@
             });
         })();
     </script>
-    <script src="assets/commun.js?v=202610131800"></script>
-    <script src="assets/mesure.js?v=202610131800"></script>
+    <script src="assets/commun.js?v=202610131900"></script>
+    <script src="assets/mesure.js?v=202610131900"></script>
 
-    <script src="assets/cookies.js?v=202610131800"></script>
+    <script src="assets/cookies.js?v=202610131900"></script>
 </body>
 </html>

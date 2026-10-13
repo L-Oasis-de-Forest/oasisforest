@@ -24,9 +24,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
-    <script src="assets/tailwind-config.js?v=202610131800"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
+    <script src="assets/tailwind-config.js?v=202610131900"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131900">
     <style>
         /* Formulaire de contact partenaires — mêmes styles que le formulaire d'inscription
            (inscription.html) : angles vifs, filets, capitales serrées. Propres à cette page. */
@@ -46,6 +46,7 @@
     </style>
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
 
     <!-- Fond animé -->
     <div class="bg-glow">
@@ -101,6 +102,7 @@
     </div>
 
 
+    <main id="contenu">
     <header class="pt-20 lg:pt-32 pb-8 relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <p class="text-accent text-[11px] font-black tracking-[0.28em] uppercase mb-5">Partenaires</p>
@@ -233,7 +235,7 @@
                     <p class="text-slate-500 text-xs leading-relaxed">76 % de l'audience vient du fil « Pour toi »</p>
                 </article>
                 </div>
-                <p class="text-slate-600 text-xs mb-20">
+                <p class="text-slate-500 text-xs mb-20">
                     Source : rapport digital interne du club, période septembre 2025 → septembre 2026.
                     Contenus autoproduits (visuels, vidéos, formats courts).
                 </p>
@@ -313,7 +315,7 @@
                 </div>
 
                 <div>
-                    <p class="champ-label">Pièce jointe <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></p>
+                    <p class="champ-label">Pièce jointe <span class="normal-case tracking-normal font-medium text-slate-500">(facultatif)</span></p>
                     <label class="fichier" for="p-joint">
                         <input type="file" id="p-joint" name="joint" accept="image/jpeg,image/png,image/webp,application/pdf">
                         <span class="text-accent font-black text-xs tracking-[0.14em] uppercase shrink-0">Joindre</span>
@@ -390,6 +392,8 @@
         })();
     </script>
 
+    </main>
+
     <!-- PIED DE PAGE — bloc identique sur toutes les pages du site.
          Les deux dernières lignes (dénomination légale, n° d'entreprise, siège, e-mail,
          domaine) sont exigées sur chaque page par la validation Google for Nonprofits. -->
@@ -431,13 +435,13 @@
             </div>
 
             <div class="filet pt-6 space-y-1.5">
-                <p class="text-[11px] leading-relaxed text-slate-600">
+                <p class="text-[11px] leading-relaxed text-slate-400">
                     L'Oasis de Forest ASBL · Siège social : Rue du Croissant 85, 1190 Forest, Belgique ·
                     Numéro d'entreprise (BCE) 0867.614.619 ·
                     <a href="mailto:union@oasisforest.be" class="hover:text-slate-400 transition-colors">union@oasisforest.be</a> ·
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
-                <p class="text-[11px] text-slate-600">
+                <p class="text-[11px] text-slate-400">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
@@ -453,8 +457,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610131800"></script>
-    <script src="assets/mesure.js?v=202610131800"></script>
+    <script src="assets/commun.js?v=202610131900"></script>
+    <script src="assets/mesure.js?v=202610131900"></script>
 
     <script>
         // Les entrées marquées "demo" sont les emplacements d'aperçu du bandeau (logo du
@@ -573,6 +577,6 @@
             }
             setTimeout(caler, 6000);
         })();
-    </script>    <script src="assets/cookies.js?v=202610131800"></script>
+    </script>    <script src="assets/cookies.js?v=202610131900"></script>
 </body>
 </html>

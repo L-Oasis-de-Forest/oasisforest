@@ -25,9 +25,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
-    <script src="assets/tailwind-config.js?v=202610131800"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
+    <script src="assets/tailwind-config.js?v=202610131900"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131900">
     <style>
         /* Formulaire d'inscription — même grammaire que le reste du site : angles vifs,
            filets, capitales serrées. Styles propres à cette page, d'où leur place ici. */
@@ -70,6 +70,7 @@
     </style>
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
 
     <!-- Fond animé -->
     <div class="bg-glow">
@@ -125,6 +126,7 @@
     </div>
 
 
+    <main id="contenu">
     <header class="pt-20 lg:pt-44 pb-8 relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8">Inscrire<br>un jeune</h1>
@@ -211,7 +213,7 @@
                     <!-- Champs désactivés tant que le bloc est replié : ni validés, ni envoyés. -->
                     <div id="bloc-parent2" class="hidden mt-8 filet pt-6">
                         <div class="flex items-baseline justify-between gap-4 mb-5">
-                            <p class="champ-label" style="margin-bottom:0">Second contact <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></p>
+                            <p class="champ-label" style="margin-bottom:0">Second contact <span class="normal-case tracking-normal font-medium text-slate-500">(facultatif)</span></p>
                             <button type="button" id="retirer-parent2" class="text-slate-500 hover:text-accent transition-colors text-[10px] font-black tracking-[0.16em] uppercase">Retirer</button>
                         </div>
                         <div class="grid sm:grid-cols-2 gap-5">
@@ -224,7 +226,7 @@
                                 <input class="champ" type="tel" id="parent2Telephone" name="parent2Telephone" maxlength="30" autocomplete="off" placeholder="+32 4xx xx xx xx" disabled>
                             </div>
                             <div>
-                                <label class="champ-label" for="parent2Email">E-mail <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></label>
+                                <label class="champ-label" for="parent2Email">E-mail <span class="normal-case tracking-normal font-medium text-slate-500">(facultatif)</span></label>
                                 <input class="champ" type="email" id="parent2Email" name="parent2Email" maxlength="120" autocomplete="off" disabled>
                                 <div class="suggestions-mail hidden" data-pour="parent2Email"></div>
                             </div>
@@ -248,7 +250,7 @@
                             <span id="montant-sur" class="text-slate-400 text-sm whitespace-nowrap">€</span>
                         </div>
                     </div>
-                    <p class="champ-label">Preuve de paiement <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></p>
+                    <p class="champ-label">Preuve de paiement <span class="normal-case tracking-normal font-medium text-slate-500">(facultatif)</span></p>
                     <label class="fichier" for="preuve">
                         <input type="file" id="preuve" name="preuve" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf">
                         <span class="text-accent font-black text-xs tracking-[0.14em] uppercase shrink-0">Joindre</span>
@@ -265,7 +267,7 @@
                      Texte à garder identique à autorisation-image.html ; changer le texte =
                      changer VERSION_TEXTE dans l'outil admin (src/droit-image.js). -->
                 <fieldset id="bloc-droit-image" class="hidden filet pt-6">
-                    <p class="champ-label">Images du jeune <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></p>
+                    <p class="champ-label">Images du jeune <span class="normal-case tracking-normal font-medium text-slate-500">(facultatif)</span></p>
                     <p class="text-slate-400 text-sm leading-relaxed mb-4">
                         Le club prend des photos et des vidéos pendant les entraînements, matchs et événements.
                         Chaque case est indépendante et vous pouvez tout refuser : cela ne change rien à l'inscription.
@@ -300,7 +302,7 @@
                         <span class="text-slate-400 text-sm leading-relaxed">
                             J'accepte que ces informations soient utilisées par L'Oasis de Forest ASBL pour la gestion
                             des inscriptions et des cotisations. Elles ne sont ni vendues ni utilisées à d'autres fins ;
-                            pour les consulter ou les faire supprimer : union@oasisforest.be. <a href="confidentialite.html" target="_blank" class="underline hover:text-white">Détails et droits</a>.
+                            pour les consulter ou les faire supprimer : union@oasisforest.be. <a href="confidentialite.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Détails et droits</a>.
                         </span>
                     </label>
                 </div>
@@ -340,6 +342,8 @@
             </div>
         </div>
     </div>
+
+    </main>
 
     <!-- PIED DE PAGE — bloc identique sur toutes les pages du site.
          Les deux dernières lignes (dénomination légale, n° d'entreprise, siège, e-mail,
@@ -382,13 +386,13 @@
             </div>
 
             <div class="filet pt-6 space-y-1.5">
-                <p class="text-[11px] leading-relaxed text-slate-600">
+                <p class="text-[11px] leading-relaxed text-slate-400">
                     L'Oasis de Forest ASBL · Siège social : Rue du Croissant 85, 1190 Forest, Belgique ·
                     Numéro d'entreprise (BCE) 0867.614.619 ·
                     <a href="mailto:union@oasisforest.be" class="hover:text-slate-400 transition-colors">union@oasisforest.be</a> ·
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
-                <p class="text-[11px] text-slate-600">
+                <p class="text-[11px] text-slate-400">
                     &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
@@ -404,8 +408,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610131800"></script>
-    <script src="assets/mesure.js?v=202610131800"></script>
+    <script src="assets/commun.js?v=202610131900"></script>
+    <script src="assets/mesure.js?v=202610131900"></script>
 
     <script>
         // Envoi vers l'outil admin (Worker Cloudflare), qui crée la fiche dans Notion.
@@ -626,6 +630,6 @@
             });
         })();
     </script>
-    <script src="assets/cookies.js?v=202610131800"></script>
+    <script src="assets/cookies.js?v=202610131900"></script>
 </body>
 </html>
