@@ -350,6 +350,23 @@ Photo affichée juste sous la fiche « Équipe première », **éditable via `/a
 + entrée `admin/config.yml`. Rendu par `renderEquipePremierePhoto()` dans
 `assets/commun.js`, masqué proprement si le champ est vide.
 
+## Droit à l'image en ligne (14/10/2026)
+
+Consentement du représentant légal recueilli en ligne, rattaché à la fiche Notion de l'affilié :
+bloc « Images du jeune » dans `inscription.html` (trois cases indépendantes, décochées : site,
+réseaux sociaux, supports ; signature = nom complet tapé) et page `autorisation-image.html`
+(hors navigation, `noindex`) pour les jeunes déjà inscrits.
+
+- **Interrupteur** : les deux pages n'affichent les cases que si `/api/inscription/statut`
+  renvoie `droitImage: true`, c'est-à-dire `DROIT_IMAGE_NOTION = "oui"` dans le `wrangler.toml`
+  de l'outil admin. À activer seulement après création des colonnes Notion « Droit à l'image »
+  (sélection multiple : Site, Réseaux sociaux, Supports du club, Refus) et « Droit à l'image -
+  Signature » (texte) dans 👥 Affiliés : sinon un consentement serait collecté sans être enregistré.
+- La signature enregistrée contient le nom, la date (Bruxelles) et `VERSION_TEXTE`
+  (`src/droit-image.js`). **Changer le texte des cases = changer cette version**, dans les
+  deux pages.
+- Documents papier équivalents : `docs-internes/` (non publié, dans `.gitignore`).
+
 ## Pièges rencontrés
 
 - **Pas de `localStorage`** dans les aperçus d'artefacts Claude.ai (fonctionne normalement sur GitHub Pages).

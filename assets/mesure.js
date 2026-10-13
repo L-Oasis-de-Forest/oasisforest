@@ -4,6 +4,12 @@
    (ad-blocker, hors ligne…), rien ne casse. */
 (function () {
     const TRACK_ENDPOINT = 'https://oasisforest-admin-tool.tristederk.workers.dev/api/track';
+    // Mesure refusée dans le bandeau cookies (assets/cookies.js) : rien n'est envoyé.
+    try {
+        const choix = localStorage.getItem('cookies-choix');
+        if (choix && choix !== 'tous' && choix !== 'essentiels' && !JSON.parse(choix).stats) return;
+    } catch (e) { /* pas de stockage : mesure active par défaut */ }
+
     const device = window.innerWidth < 768 ? 'Mobile' : 'Desktop';
 
     // Origine du visiteur : ?utm_source=… s'il existe (liens des bios réseaux), sinon le

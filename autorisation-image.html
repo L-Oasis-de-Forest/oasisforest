@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Autorisation de droit à l\'image pour un jeune déjà inscrit à l\'Union Oasis Forest.">
+    <title>Droit à l'image | Union Oasis Forest</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://oasisforest.be/autorisation-image.html">
+
+    <link rel="icon" type="image/svg+xml" href="./logo%20uof.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oasisforest.be/autorisation-image.html">
+    <meta property="og:title" content="Droit à l'image | Union Oasis Forest">
+    <meta property="og:description" content="Autorisation de droit à l\'image pour un jeune déjà inscrit à l\'Union Oasis Forest.">
+    <meta property="og:image" content="https://oasisforest.be/img/partage.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_BE">
+    <meta property="og:site_name" content="Union Oasis Forest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
+    <script src="assets/tailwind-config.js?v=202610131800"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131800">
+    <style>
+        /* Formulaire d'inscription — même grammaire que le reste du site : angles vifs,
+           filets, capitales serrées. Styles propres à cette page, d'où leur place ici. */
+        .champ-label { display:block; font-size:10px; font-weight:900; letter-spacing:.2em;
+            text-transform:uppercase; color:#94a3b8; margin-bottom:.5rem; }
+        .champ { width:100%; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.15);
+            color:#fff; padding:.85rem 1rem; font-size:1rem; border-radius:0; transition:border-color .2s; }
+        /* 1rem minimum : en dessous, Safari iOS zoome sur le champ au focus. */
+        .champ:focus { outline:none; border-color:#00c2ff; }
+        .champ::placeholder { color:#475569; }
+        input[type=date].champ { color-scheme:dark; }
+        /* iOS affiche le champ date à sa largeur « naturelle », qui déborde de l'écran : on le
+           ramène à la largeur de la colonne et on aligne la date à gauche. */
+        input[type=date].champ { -webkit-appearance:none; appearance:none; display:block; min-width:0; max-width:100%; min-height:3.3rem; }
+        input[type=date].champ::-webkit-date-and-time-value { text-align:left; }
+        .choix { position:relative; display:flex; cursor:pointer; }
+        .choix span { flex:1; } /* cases d'un même groupe à la même hauteur */
+        .choix input { position:absolute; opacity:0; pointer-events:none; }
+        .choix span { display:block; border:1px solid rgba(255,255,255,.15); padding:1rem 1.1rem;
+            color:#cbd5e1; font-weight:800; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase;
+            transition:border-color .2s, background .2s, color .2s; }
+        .choix span small { display:block; font-weight:500; letter-spacing:0; text-transform:none;
+            color:#64748b; font-size:.75rem; margin-top:.3rem; }
+        .choix:hover span { border-color:rgba(0,194,255,.5); }
+        .choix input:checked + span { border-color:#00c2ff; background:rgba(0,194,255,.08); color:#fff; }
+        .choix input:focus-visible + span { outline:2px solid #00c2ff; outline-offset:2px; }
+        /* Champ piège anti-robots : hors écran, jamais vu ni tabulé par un humain. */
+        .piege { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+        .fichier { display:flex; align-items:center; gap:1rem; border:1px dashed rgba(255,255,255,.2);
+            padding:1rem; cursor:pointer; color:#94a3b8; font-size:.85rem; }
+        .fichier:hover { border-color:#00c2ff; color:#fff; }
+        .fichier input { position:absolute; opacity:0; width:1px; height:1px; }
+        /* Paiement : trois cases étroites sur téléphone, « En partie » doit tenir sur une ligne. */
+        .paiement-choix .choix span { text-align:center; padding-left:.4rem; padding-right:.4rem; white-space:nowrap; letter-spacing:.08em; }
+        /* Suggestions de messagerie sous les champs e-mail (voir le script en bas de page). */
+        .suggestions-mail { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }
+        .suggestions-mail button { border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.03); color:#cbd5e1;
+            font-size:.8rem; font-weight:700; padding:.45rem .7rem; transition:border-color .2s, color .2s; }
+        .suggestions-mail button:hover, .suggestions-mail button:focus-visible { border-color:#00c2ff; color:#fff; outline:none; }
+    </style>
+</head>
+<body class="antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Fond animé -->
+    <div class="bg-glow">
+        <div class="blob-1 animate-blob"></div>
+        <div class="blob-2 animate-blob"></div>
+        <div class="blob-3 animate-blob"></div>
+    </div>
+
+    <!-- NAVIGATION — bloc identique sur toutes les pages du site.
+         Si tu le modifies, reporte la modification sur index.html, a-propos.html,
+         equipes.html, galerie.html, partenaires.html et contact.html. -->
+    <nav class="hidden lg:block fixed top-0 w-full z-50 bg-night/85 backdrop-blur-md border-b border-white/10 h-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-full">
+            <div class="flex justify-between items-center h-full gap-10">
+                <a href="index.html" aria-label="Union Oasis Forest - accueil" class="flex-shrink-0 flex items-center gap-4 group">
+                    <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity">
+                    <span class="font-black text-white text-sm xl:text-base tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
+                </a>
+                <div class="flex items-center gap-6 xl:gap-9">
+                    <a href="index.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Accueil</a>
+                    <a href="a-propos.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Le club</a>
+                    <a href="equipes.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Nos équipes</a>
+                    <a href="galerie.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Galerie</a>
+                    <a href="partenaires.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Partenaires</a>
+                    <a href="contact.html" class="text-slate-400 hover:text-white border-b-2 border-transparent pb-1 transition-colors font-bold text-[11px] xl:text-xs uppercase tracking-[0.16em] whitespace-nowrap">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sur téléphone, pas de barre d'en-tête : le bouton menu flotte juste sous le bandeau
+         sponsors, sans cadre ni fond (demande du club) ; l'ombre portée le garde lisible
+         au-dessus des photos. La croix de fermeture prend la même place. -->
+    <button id="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" class="lg:hidden fixed top-[3.6rem] right-4 z-[70] p-2 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.75)] transition-transform active:scale-90">
+        <i class="fas fa-bars text-3xl"></i>
+    </button>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-night/95 backdrop-blur-xl opacity-0 invisible transition-all duration-300 lg:hidden flex flex-col justify-center">
+        <div class="flex flex-col items-end text-right gap-6 w-full px-8">
+            <a href="index.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Accueil</a>
+            <a href="a-propos.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Le club</a>
+            <a href="equipes.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Nos équipes</a>
+            <a href="galerie.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Galerie</a>
+            <a href="partenaires.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Partenaires</a>
+            <a href="contact.html" class="mobile-link titre-brut text-3xl text-white hover:text-accent transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Bandeau sponsors (data/sponsors.json). Masqué automatiquement si la liste est vide. -->
+    <div id="sponsors-marquee" class="fixed top-0 lg:top-20 h-12 lg:h-auto w-full z-40 bg-black/70 backdrop-blur-md border-b border-white/10 py-2 flex overflow-hidden">
+        <div id="sponsors-track-1" class="flex animate-marquee min-w-full shrink-0 items-center justify-around gap-12 px-6"></div>
+        <div id="sponsors-track-2" class="flex animate-marquee min-w-full shrink-0 items-center justify-around gap-12 px-6" aria-hidden="true"></div>
+    </div>
+
+
+    <header class="pt-20 lg:pt-44 pb-8 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8">Droit<br>à l'image</h1>
+            <div class="filet pt-6">
+                <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl leading-relaxed">Pour un jeune déjà inscrit au club. Retrouvez sa fiche avec les informations de l'inscription, puis indiquez votre choix.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="pb-16 relative z-10">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+
+            <form id="form-droit" class="space-y-12" novalidate>
+                <input type="hidden" name="t0" id="t0" value="">
+                <div class="piege" aria-hidden="true">
+                    <label for="site_web">Ne pas remplir ce champ</label>
+                    <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off">
+                </div>
+
+                <fieldset>
+                    <p class="champ-label">Le jeune et sa fiche</p>
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div><label class="champ-label" for="enfantPrenom">Prénom du jeune</label><input class="champ" type="text" id="enfantPrenom" name="enfantPrenom" required maxlength="80" autocomplete="off"></div>
+                        <div><label class="champ-label" for="enfantNom">Nom du jeune</label><input class="champ" type="text" id="enfantNom" name="enfantNom" required maxlength="80" autocomplete="off"></div>
+                        <div><label class="champ-label" for="dateNaissance">Date de naissance</label><input class="champ" type="date" id="dateNaissance" name="dateNaissance" required></div>
+                        <div><label class="champ-label" for="parentEmail">E-mail de la personne de contact</label><input class="champ" type="email" id="parentEmail" name="parentEmail" required maxlength="120" autocomplete="email" inputmode="email"></div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-3 leading-relaxed">Ces quatre informations doivent être identiques à celles de l'inscription. Elles ne servent qu'à retrouver la fiche.</p>
+                </fieldset>
+
+                <!-- Texte à garder identique à celui d'inscription.html ; changer le texte =
+                     changer VERSION_TEXTE dans l'outil admin (src/droit-image.js). -->
+                <fieldset>
+                    <p class="champ-label">Images du jeune</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Le club prend des photos et des vidéos pendant les entraînements, matchs et événements.
+                        Chaque case est indépendante et vous pouvez tout refuser : cela ne change rien à la participation du jeune.
+                        Aucun nom complet n'accompagne une photo. Vous pouvez retirer l'autorisation à tout moment en écrivant à union@oasisforest.be.
+                        <a href="confidentialite.html" target="_blank" class="underline hover:text-white">Détails et droits</a>.
+                    </p>
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" name="droitSite" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise la publication d'images du jeune sur le site oasisforest.be.</span>
+                    </label>
+                    <label class="flex items-start gap-3 cursor-pointer mt-3">
+                        <input type="checkbox" name="droitReseaux" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise la publication sur les réseaux sociaux du club (Instagram, Facebook, TikTok).</span>
+                    </label>
+                    <label class="flex items-start gap-3 cursor-pointer mt-3">
+                        <input type="checkbox" name="droitSupports" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise leur usage dans les supports du club : affiches, dossier de sponsoring, presse locale.</span>
+                    </label>
+                    <div id="bloc-signature" class="hidden mt-5">
+                        <label class="champ-label" for="droitSignataire">Signature : votre nom complet</label>
+                        <input class="champ" type="text" id="droitSignataire" name="droitSignataire" maxlength="120" autocomplete="name" disabled>
+                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">Je suis titulaire de l'autorité parentale sur ce jeune. Taper mon nom vaut signature ; la date et la version du texte sont enregistrées.</p>
+                    </div>
+                </fieldset>
+
+                <label class="flex items-start gap-3 cursor-pointer filet pt-6">
+                    <input type="checkbox" name="consentement" required class="mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                    <span class="text-slate-400 text-sm leading-relaxed">Je confirme que ce choix est celui du représentant légal du jeune (y compris si je ne coche aucune case : il sera enregistré comme un refus).</span>
+                </label>
+
+                <p id="form-erreur" class="hidden border-l-2 border-red-500 bg-red-500/10 text-red-200 text-sm px-4 py-3" role="alert"></p>
+                <button type="submit" id="form-envoyer" class="bouton-plein w-full sm:w-auto">Enregistrer mon choix</button>
+            </form>
+
+            <div id="indisponible" class="hidden filet pt-10">
+                <p class="text-slate-300 font-light leading-relaxed max-w-xl">Cette page n'est pas encore ouverte. Écrivez-nous sur WhatsApp au +32 477 02 20 21 ou à union@oasisforest.be.</p>
+            </div>
+
+            <div id="merci" class="hidden filet pt-10" tabindex="-1">
+                <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-4">Choix enregistré</p>
+                <h2 class="titre-brut text-white text-3xl md:text-5xl mb-6">Merci, c'est noté.</h2>
+                <p class="text-slate-300 font-light leading-relaxed max-w-xl mb-3">Vous pouvez modifier ce choix à tout moment en écrivant à union@oasisforest.be.</p>
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <button type="button" id="autre-enfant" class="bouton-vide">Un autre jeune</button>
+                    <a href="index.html" class="bouton-vide">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Envoi vers l'outil admin (Worker Cloudflare), qui retrouve la fiche dans Notion.
+        (function () {
+            const BASE = ['localhost', '127.0.0.1'].includes(location.hostname)
+                ? 'http://localhost:8787/api'
+                : 'https://oasisforest-admin-tool.tristederk.workers.dev/api';
+            const form = document.getElementById('form-droit');
+            const erreur = document.getElementById('form-erreur');
+            const bouton = document.getElementById('form-envoyer');
+            const merci = document.getElementById('merci');
+            const texteBouton = bouton.textContent;
+            const armer = () => { document.getElementById('t0').value = String(Date.now()); };
+            armer();
+
+            // La page n'a de sens que si le serveur enregistre le consentement (statut.droitImage).
+            fetch(BASE + '/inscription/statut', { cache: 'no-store' })
+                .then((r) => r.json())
+                .then((statut) => {
+                    if (!statut.droitImage) { form.classList.add('hidden'); document.getElementById('indisponible').classList.remove('hidden'); }
+                })
+                .catch(() => {});
+
+            const cases = [...form.querySelectorAll('.droit-case')];
+            const blocSignature = document.getElementById('bloc-signature');
+            const champSignature = document.getElementById('droitSignataire');
+            const majSignature = () => {
+                const une = cases.some((c) => c.checked);
+                blocSignature.classList.toggle('hidden', !une);
+                champSignature.disabled = !une;
+                champSignature.required = une;
+            };
+            cases.forEach((c) => c.addEventListener('change', majSignature));
+
+            function montrerErreur(message) {
+                erreur.textContent = message;
+                erreur.classList.remove('hidden');
+                erreur.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                erreur.classList.add('hidden');
+                if (!form.reportValidity()) return;
+                bouton.disabled = true;
+                bouton.textContent = 'Envoi en cours…';
+                try {
+                    const res = await fetch(BASE + '/droit-image', { method: 'POST', body: new FormData(form) });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok || !data.ok) throw new Error(data.erreur || 'Envoi impossible pour le moment.');
+                    form.classList.add('hidden');
+                    merci.classList.remove('hidden');
+                    merci.focus();
+                } catch (err) {
+                    montrerErreur(err.message);
+                    armer();
+                } finally {
+                    bouton.disabled = false;
+                    bouton.textContent = texteBouton;
+                }
+            });
+
+            document.getElementById('autre-enfant').addEventListener('click', () => {
+                form.reset(); majSignature(); armer();
+                merci.classList.add('hidden'); form.classList.remove('hidden');
+                form.querySelector('input[name=enfantPrenom]').focus();
+            });
+        })();
+    </script>
+    <script src="assets/commun.js?v=202610131800"></script>
+    <script src="assets/mesure.js?v=202610131800"></script>
+
+    <script src="assets/cookies.js?v=202610131800"></script>
+</body>
+</html>

@@ -25,9 +25,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131530">
-    <script src="assets/tailwind-config.js?v=202610131530"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131530">
+    <link rel="stylesheet" href="assets/polices.css?v=202610131800">
+    <script src="assets/tailwind-config.js?v=202610131800"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610131800">
     <style>
         /* Formulaire d'inscription — même grammaire que le reste du site : angles vifs,
            filets, capitales serrées. Styles propres à cette page, d'où leur place ici. */
@@ -260,6 +260,36 @@
                     </p>
                 </fieldset>
 
+                <!-- Droit à l'image : affiché seulement si le serveur l'a activé (statut.droitImage),
+                     pour ne jamais recueillir un consentement qu'il ne saurait pas enregistrer.
+                     Texte à garder identique à autorisation-image.html ; changer le texte =
+                     changer VERSION_TEXTE dans l'outil admin (src/droit-image.js). -->
+                <fieldset id="bloc-droit-image" class="hidden filet pt-6">
+                    <p class="champ-label">Images du jeune <span class="normal-case tracking-normal font-medium text-slate-600">(facultatif)</span></p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Le club prend des photos et des vidéos pendant les entraînements, matchs et événements.
+                        Chaque case est indépendante et vous pouvez tout refuser : cela ne change rien à l'inscription.
+                        Aucun nom complet n'accompagne une photo. Vous pouvez retirer l'autorisation à tout moment en écrivant à union@oasisforest.be.
+                    </p>
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" name="droitSite" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise la publication d'images de mon enfant sur le site oasisforest.be.</span>
+                    </label>
+                    <label class="flex items-start gap-3 cursor-pointer mt-3">
+                        <input type="checkbox" name="droitReseaux" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise la publication sur les réseaux sociaux du club (Instagram, Facebook, TikTok).</span>
+                    </label>
+                    <label class="flex items-start gap-3 cursor-pointer mt-3">
+                        <input type="checkbox" name="droitSupports" class="droit-case mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
+                        <span class="text-slate-300 text-sm leading-relaxed">J'autorise leur usage dans les supports du club : affiches, dossier de sponsoring, presse locale.</span>
+                    </label>
+                    <div id="bloc-signature" class="hidden mt-5">
+                        <label class="champ-label" for="droitSignataire">Signature : votre nom complet</label>
+                        <input class="champ" type="text" id="droitSignataire" name="droitSignataire" maxlength="120" autocomplete="name" disabled>
+                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">Je suis titulaire de l'autorité parentale sur ce jeune. Taper mon nom vaut signature ; la date et la version du texte sont enregistrées.</p>
+                    </div>
+                </fieldset>
+
                 <div class="filet pt-6">
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" name="newsletter" class="mt-1 w-4 h-4 accent-[#00c2ff] shrink-0">
@@ -374,8 +404,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610131530"></script>
-    <script src="assets/mesure.js?v=202610131530"></script>
+    <script src="assets/commun.js?v=202610131800"></script>
+    <script src="assets/mesure.js?v=202610131800"></script>
 
     <script>
         // Envoi vers l'outil admin (Worker Cloudflare), qui crée la fiche dans Notion.
@@ -411,6 +441,7 @@
                     chargement.classList.add('hidden');
                     form.classList.remove('hidden');
                     armer();
+                    if (statut.droitImage) document.getElementById('bloc-droit-image').classList.remove('hidden');
                 })
                 .catch(() => {
                     chargement.classList.add('hidden');
@@ -425,6 +456,18 @@
             preuve.addEventListener('change', () => {
                 preuveNom.textContent = preuve.files[0] ? preuve.files[0].name : texteFichier;
             });
+
+            // Droit à l'image : la signature n'apparaît (et n'est obligatoire) que si une case est cochée.
+            const casesDroit = [...form.querySelectorAll('.droit-case')];
+            const blocSignature = document.getElementById('bloc-signature');
+            const champSignature = document.getElementById('droitSignataire');
+            const majSignature = () => {
+                const une = casesDroit.some((c) => c.checked);
+                blocSignature.classList.toggle('hidden', !une);
+                champSignature.disabled = !une;
+                champSignature.required = une;
+            };
+            casesDroit.forEach((c) => c.addEventListener('change', majSignature));
 
             function montrerErreur(message) {
                 erreur.textContent = message + ' Si le problème persiste, écrivez-nous sur WhatsApp au +32 477 02 20 21.';
@@ -514,6 +557,10 @@
                     lignes.push(['Second contact', val('parent2Nom')], ['Téléphone', val('parent2Telephone')]);
                     if (val('parent2Email')) lignes.push(['E-mail', val('parent2Email')]);
                 }
+                if (!document.getElementById('bloc-droit-image').classList.contains('hidden')) {
+                    const choix = casesDroit.filter((c) => c.checked).map((c) => c.nextElementSibling.textContent.match(/(site|réseaux sociaux|supports)/i)[0]);
+                    lignes.push(['Images', choix.length ? choix.join(', ') : 'Aucune autorisation']);
+                }
                 const recap = document.getElementById('relecture-recap');
                 recap.replaceChildren(...lignes.map(([k, v]) => {
                     const tr = document.createElement('tr');
@@ -579,6 +626,6 @@
             });
         })();
     </script>
-    <script src="assets/cookies.js?v=202610131530"></script>
+    <script src="assets/cookies.js?v=202610131800"></script>
 </body>
 </html>
