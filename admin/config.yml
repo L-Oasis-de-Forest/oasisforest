@@ -63,6 +63,12 @@ collections:
                 widget: image
                 hint: "Redimensionner à 1600 px de large maximum. Privilégier le format WebP (le JPG/PNG reste accepté)."
               - { name: legende, label: Légende, widget: string }
+              - name: masquee
+                label: Masquer cette photo sur tout le site
+                widget: boolean
+                default: false
+                required: false
+                hint: "À cocher tant que l'autorisation de droit à l'image n'est pas signée : la photo disparaît de la galerie, de l'accueil, des polaroids des équipes et du hero, et de la photo de l'équipe première si c'est la même image. Elle n'est pas supprimée : décochez pour la réafficher. Une photo qui n'est pas dans la galerie peut y être ajoutée uniquement pour la masquer."
               - name: categorie
                 label: Catégorie
                 widget: string

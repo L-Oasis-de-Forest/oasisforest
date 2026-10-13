@@ -97,6 +97,12 @@ aucune entité enregistrée. Ne pas réintroduire cette formulation.
   `admin/config.yml`. Le rendu JS est regroupé dans `index.html` (bloc « RENDU DES CONTENUS
   ÉDITABLES »), avec dégradation propre si le JSON manque (image de secours pour le hero,
   section masquée pour les sponsors, état vide pour la galerie).
+- **Masquer une photo** (14/10/2026) : case « Masquer cette photo sur tout le site » sur chaque photo
+  de la galerie dans `/admin` (champ `masquee` de `data/gallery.json`). Une photo masquée disparaît de
+  la galerie, de l'aperçu de l'accueil, des polaroids des équipes, du hero et de la photo de l'équipe
+  première (même chemin d'image), sans être supprimée. **Ne couvre pas** les photos codées en dur
+  (ligne du temps d'`a-propos.html`, photo pleine largeur de l'accueil) : à retirer à la main.
+  L'image de secours du hero (visible avant le JS) est une photo de l'équipe première, jamais de jeunes.
 - **Chemins d'images** : le CMS écrit des chemins absolus `/img/…`, mais le rendu les
   convertit en relatifs (`toRel()` retire le `/` initial) — indispensable tant qu'il n'y a
   pas de `CNAME` (GitHub Pages sert alors sur le sous-chemin `/oasisforest/`).
@@ -237,7 +243,7 @@ nouveau rapport fourni par le club.
   (BX1, +250 spectateurs, +40 matchs) servent d'argument commercial, pas de bilan associatif.
 - **Pas de « semaine type » pour la D2** : ses horaires bougent trop en cours de saison, on
   renvoie au calendrier RBFA. Les U21 n'affichent que leur entraînement fixe (lundi 19h30,
-  Primeur) en tête de modale, avant les matchs RBFA. Les U15-U17 (lundi/vendredi 18h à Bempt,
+  Centre sportif des Primeurs, Rue des Primeurs 20) en tête de modale, avant les matchs RBFA. Les U15-U17 (lundi/vendredi 18h à Bempt,
   matchs le samedi) et le Baby Futsal gardent leur semaine type (mise à jour du 13/10/2026).
 - **Ordre des équipes sur `equipes.html` : du plus jeune à l'équipe première**, l'encart
   « Classements officiels » fermant la page juste après la D2.

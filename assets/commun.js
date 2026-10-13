@@ -140,6 +140,11 @@ async function renderEquipePremierePhoto() {
     const data = await loadJSON('data/equipe-premiere.json');
     const photo = data && data.photo && data.photo.trim();
     if (!photo) return;
+    // Photo masquée depuis la galerie (/admin, case « Masquer cette photo ») : le bloc reste caché.
+    const galerie = await loadJSON('data/gallery.json');
+    const masquee = ((galerie && Array.isArray(galerie.photos)) ? galerie.photos : [])
+        .some((p) => p.masquee === true && toRel(p.image) === toRel(photo));
+    if (masquee) return;
     img.src = toRel(photo);
     bloc.classList.remove('hidden');
 }

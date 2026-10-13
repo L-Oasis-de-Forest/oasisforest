@@ -86,9 +86,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610131230">
-    <link rel="stylesheet" href="assets/polices.css?v=202610131900">
-    <script src="assets/tailwind-config.js?v=202610131900"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610131900">
+    <link rel="stylesheet" href="assets/polices.css?v=202610132100">
+    <script src="assets/tailwind-config.js?v=202610132100"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610132100">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
@@ -216,7 +216,7 @@
             </div>
             <div class="hidden lg:block absolute left-10 bottom-0 parallax-wrapper" data-speed="-0.1">
                 <div class="polaroid polaroid--tape-2 hover-tilt -rotate-6 w-56 opacity-60 hover:opacity-100 transition-opacity" data-tilt-max="15">
-                    <img data-hero-img="1" src="img/IMG_8323.webp" alt="Victoire" class="aspect-square grayscale hover:grayscale-0 transition-all duration-500 object-cover">
+                    <img data-hero-img="1" src="img/equipe-premiere.webp" alt="Victoire" class="aspect-square grayscale hover:grayscale-0 transition-all duration-500 object-cover">
                     <p data-hero-caption="1" class="polaroid-caption font-handwriting">L'Esprit d'Équipe</p>
                 </div>
             </div>
@@ -365,6 +365,7 @@
                             <tr><th>E-mail</th><td><a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a></td></tr>
                             <tr><th>WhatsApp</th><td><a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" data-track="WhatsApp (contact)" class="hover:text-accent transition-colors">+32 477 02 20 21</a></td></tr>
                             <tr><th>Salle et entraînements</th><td>Bd. de la 2ème Armée Britannique 600, 1190 Forest</td></tr>
+                            <tr><th>Entraînement U21 (lundi)</th><td>Centre sportif des Primeurs, Rue des Primeurs 20, 1190 Forest</td></tr>
                         </tbody>
                     </table>
                     <!-- Réseaux : sous les coordonnées, rangée centrée à l'horizontale,
@@ -799,7 +800,7 @@
                 // Un seul entraînement fixe ; les matchs viennent du calendrier RBFA (voir
                 // openTeamModal, qui place cet entraînement avant la liste des matchs).
                 schedule: [
-                    { day: 'LUN', type: 'Entraînement', time: '19:30', location: 'Primeur', isMatch: false }
+                    { day: 'LUN', type: 'Entraînement', time: '19:30', location: 'Centre sportif des Primeurs', isMatch: false }
                 ]
             },
             // U15 et U17 fusionnés en un seul groupe : une seule fiche, un seul calendrier.
@@ -1108,6 +1109,13 @@
             }
         }
 
+        // Photos masquées depuis /admin (case « Masquer cette photo » de la galerie) : la photo
+        // disparaît de partout où elle est lue depuis les données (galerie, aperçu, polaroids
+        // des équipes, polaroids du hero), sans être supprimée. Utile tant que l'autorisation
+        // de droit à l'image n'est pas signée.
+        const masqueesPromise = loadJSON('data/gallery.json').then((d) =>
+            new Set(((d && Array.isArray(d.photos)) ? d.photos : []).filter((p) => p.masquee === true).map((p) => toRel(p.image))));
+
         // Calendrier (matchs/détections/événements) : géré depuis l'onglet Calendrier
         // de l'outil admin (Notion), pas depuis /admin (Sveltia CMS) — data/evenements.json
         // ne sert plus que de secours si jamais l'outil admin est indisponible.
@@ -1207,11 +1215,13 @@
             const data = await loadJSON('data/hero.json');
             if (!data || !Array.isArray(data.polaroids)) return; // on garde l'image de secours du HTML
             const resolved = []; // { pick, legende } par index, réutilisé pour le tirage mobile
+            const masquees = await masqueesPromise;
 
             data.polaroids.forEach((p, k) => {
                 const imgs = document.querySelectorAll(`[data-hero-img="${k}"]`);
                 const caps = document.querySelectorAll(`[data-hero-caption="${k}"]`);
-                const pick = (Array.isArray(p.images) && p.images.length) ? toRel(pickRandom(p.images)) : null;
+                const libres = Array.isArray(p.images) ? p.images.filter((im) => !masquees.has(toRel(im))) : [];
+                const pick = libres.length ? toRel(pickRandom(libres)) : null;
                 imgs.forEach((img) => {
                     if (pick) img.src = pick;
                     if (p.legende) img.alt = p.legende;
@@ -1354,7 +1364,7 @@
                 loadJSON('data/gallery.json'),
                 loadJSON('data/categories.json')
             ]);
-            galleryPhotos = (galleryData && Array.isArray(galleryData.photos)) ? galleryData.photos : [];
+            galleryPhotos = (galleryData && Array.isArray(galleryData.photos)) ? galleryData.photos.filter((p) => p.masquee !== true) : [];
             categoriesList = (categoriesData && Array.isArray(categoriesData.categories)) ? categoriesData.categories : [];
             renderGalleryGrid();
             setupGalleryFilters();
@@ -1892,7 +1902,7 @@
         });
     </script>
 
-    <script src="assets/mesure.js?v=202610131900"></script>
-    <script src="assets/cookies.js?v=202610131900"></script>
+    <script src="assets/mesure.js?v=202610132100"></script>
+    <script src="assets/cookies.js?v=202610132100"></script>
 </body>
 </html>
