@@ -1,6 +1,20 @@
 {
   "sponsors": [
     {
+      "nom": "ATA Bao & Burger",
+      "logo": "/img/sponsor-ata.svg",
+      "url": "https://www.instagram.com/ata_bao_burger/",
+      "principal": false,
+      "demo": false
+    },
+    {
+      "nom": "TELCOM",
+      "logo": "/img/sponsor-telcom.svg",
+      "url": "https://www.telcom-be.fr/",
+      "principal": false,
+      "demo": false
+    },
+    {
       "nom": "Emplacement partenaire disponible",
       "logo": "/img/logo uof.svg",
       "url": "",
