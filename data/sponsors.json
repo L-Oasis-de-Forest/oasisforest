@@ -5,14 +5,16 @@
       "logo": "/img/sponsor-ata.svg",
       "url": "https://www.instagram.com/ata_bao_burger/",
       "principal": false,
-      "demo": false
+      "demo": false,
+      "hauteur": 40
     },
     {
       "nom": "TELCOM",
       "logo": "/img/sponsor-telcom.svg",
       "url": "https://www.telcom-be.fr/",
       "principal": false,
-      "demo": false
+      "demo": false,
+      "hauteur": 20
     },
     {
       "nom": "Emplacement partenaire disponible",

@@ -114,6 +114,7 @@ collections:
                 required: false
                 hint: "Logo au format SVG ou PNG sur fond transparent de préférence. Laisser vide affiche le nom en texte."
               - { name: url, label: Site web, widget: string, required: false }
+              - { name: hauteur, label: Hauteur du logo (px), widget: number, value_type: int, min: 12, max: 44, required: false, hint: "Optionnel, 28 par défaut. Un logo très large (type TELCOM) se règle plus bas (≈ 20), un logo compact avec peu de détails plus haut (≈ 40)." }
               - { name: principal, label: Sponsor maillot, widget: boolean, default: false }
               - name: demo
                 label: Emplacement d'aperçu (pas un vrai partenaire)

@@ -85,7 +85,8 @@ function buildSponsor(s) {
         inner.src = toRel(s.logo);
         inner.alt = s.nom || '';
         inner.loading = 'lazy';
-        inner.className = 'h-7 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity';
+        inner.className = 'w-auto object-contain opacity-80 hover:opacity-100 transition-opacity';
+        inner.style.height = (Number(s.hauteur) > 0 ? Number(s.hauteur) : 28) + 'px'; // 28 px = ancien h-7
     } else if (s.principal) {
         inner = document.createElement('div');
         inner.className = 'flex items-center gap-2';
