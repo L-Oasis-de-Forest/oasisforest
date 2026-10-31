@@ -85,10 +85,10 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310554">
-    <link rel="stylesheet" href="assets/polices.css?v=202610310554">
-    <script src="assets/tailwind-config.js?v=202610310554"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610310554">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610312209">
+    <link rel="stylesheet" href="assets/polices.css?v=202610312209">
+    <script src="assets/tailwind-config.js?v=202610312209"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610312209">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
@@ -334,8 +334,9 @@
                 <span class="numero text-3xl md:text-4xl block mb-4" style="-webkit-text-stroke-color: rgba(2,6,23,.35);">04</span>
                 <h2 class="titre-brut text-night text-3xl md:text-5xl mb-5 max-w-2xl">Soutenir le club</h2>
                 <p class="text-night/90 font-medium max-w-xl mb-0 leading-9">
-                    Votre soutien offre à chaque <mark class="surligne">jeune de Forest</mark> le droit de jouer, de grandir
-                    et de <mark class="surligne">rêver</mark>. Rejoignez la <mark class="surligne">passion</mark> du club et la <mark class="surligne">ferveur</mark> de ses supporters.
+                    Votre soutien offre à chacun de <mark class="surligne">nos jeunes</mark> le droit de jouer, de grandir
+                    et de <mark class="surligne">rêver</mark>.<br>
+                    Rejoignez la <mark class="surligne">passion</mark> du club et la <mark class="surligne">ferveur</mark> de ses supporters.
                 </p>
                 </div>
                 <a href="partenaires.html" class="inline-flex items-center md:mr-6 lg:mr-12 bg-night text-white font-black text-sm md:text-base tracking-[0.16em] uppercase px-10 py-5 hover:bg-white hover:text-night transition-colors">
@@ -577,18 +578,18 @@
          après 10s sans interaction ; la fermeture n'est pas mémorisée, la pop-up revient à
          chaque arrivée sur l'accueil. Uniquement des échéances réelles issues du calendrier du
          club - jamais de fausse urgence (cf. CLAUDE.md, directive 2005/29/CE). -->
-    <div id="modal-popup-actu" class="fixed top-28 sm:top-32 right-4 z-[140] hidden w-[calc(100%-4rem)] max-w-[260px] opacity-0 -translate-y-3 transition-all duration-300">
-        <div id="popup-actu-card" class="glass-panel border border-slate-400/30 rounded-2xl p-4 relative shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+    <div id="modal-popup-actu" class="fixed top-28 sm:top-32 right-4 z-[140] hidden w-[calc(100%-4rem)] max-w-[210px] sm:max-w-[260px] opacity-0 -translate-y-3 transition-all duration-300">
+        <div id="popup-actu-card" class="glass-panel border border-slate-400/30 rounded-2xl p-3 sm:p-4 relative shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
             <button id="btn-close-popup-actu" aria-label="Fermer" class="absolute top-3 right-3 w-8 h-8 bg-white/5 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
                 <i class="fas fa-times text-sm"></i>
             </button>
             <div class="flex items-start gap-3 pr-6">
-                <div id="popup-actu-icon" class="w-11 h-11 shrink-0 rounded-xl bg-accent/10 flex items-center justify-center text-lg text-accent">
+                <div id="popup-actu-icon" class="hidden sm:flex w-11 h-11 shrink-0 rounded-xl bg-accent/10 items-center justify-center text-lg text-accent">
                     <i class="fas fa-bullhorn"></i>
                 </div>
                 <div class="min-w-0">
                     <span id="popup-actu-badge" class="text-accent text-[10px] font-bold tracking-widest uppercase block mb-1"></span>
-                    <h3 id="popup-actu-titre" class="text-lg font-black text-white mb-1.5 leading-tight"></h3>
+                    <h3 id="popup-actu-titre" class="text-sm sm:text-lg font-black text-white mb-1 sm:mb-1.5 leading-tight"></h3>
                     <p id="popup-actu-datetime" class="text-white font-bold text-xs mb-1 flex items-center gap-1.5"><i class="far fa-clock text-accent"></i> <span></span></p>
                     <p id="popup-actu-lieu" class="text-slate-400 text-xs mb-2 flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-accent"></i> <span></span></p>
                     <p id="popup-actu-desc" class="text-slate-300 text-xs leading-relaxed mb-3"></p>
@@ -779,12 +780,12 @@
                         <div class="${dayBg} flex flex-col items-center justify-center w-14 md:w-16 p-2 shrink-0 transition-colors">
                             <span class="text-xs font-black uppercase tracking-wider">${item.day}</span>
                         </div>
-                        <div class="p-3 md:p-4 flex-1 flex flex-col justify-center relative">
-                            <div class="flex justify-between items-start mb-1 gap-2">
+                        <div class="p-3 md:p-4 flex-1 min-w-0 flex flex-col justify-center relative">
+                            <div class="flex flex-wrap justify-between items-start mb-1 gap-x-3 gap-y-1">
                                 <span class="font-bold text-white text-sm md:text-base flex items-center flex-wrap gap-x-2">
                                     ${icon} ${item.type} ${matchBadge}
                                 </span>
-                                <span class="text-accent font-black text-sm md:text-base shrink-0">${item.time}</span>
+                                <span class="text-accent font-black text-sm md:text-base whitespace-nowrap">${item.time}</span>
                             </div>
                             <span class="text-xs text-slate-400 flex items-center gap-1.5 mt-1">
                                 <i class="fas fa-map-marker-alt w-3 text-center opacity-70"></i> ${item.location}
@@ -851,7 +852,7 @@
                 iconBg: 'bg-gradient-to-br from-emerald-400 to-teal-500',
                 desc: "Une initiation au sport en immersion néerlandophone, dans un cadre bienveillant et familial. L'objectif n'est pas la compétition, mais le développement de la motricité, l'apprentissage de l'équilibre, le vivre-ensemble et les premiers contacts ludiques avec le ballon.",
                 schedule: [
-                    { day: 'SAM', type: 'Séance Éveil & Psychomotricité', time: '14:00 - 15:00', location: 'Bempt', isMatch: false }
+                    { day: 'SAM', type: 'Entraînement', time: '14:00 - 15:00', location: 'Bempt', isMatch: false }
                 ]
             }
         };
@@ -958,7 +959,7 @@
             document.getElementById('modal-info-subtitle').textContent = data.subtitle;
             document.getElementById('modal-info-desc').innerHTML = data.desc;
 
-            document.getElementById('modal-cal-title').textContent = `Horaires ${data.title}`;
+            document.getElementById('modal-cal-title').textContent = `Horaires ${data.title}`.replace(/-/g, '\u2011'); // tiret insécable : « (U3‑U7) » ne se coupe plus
 
             // Mise à jour des boutons selon le type d'équipe (compétition vs jeunes)
             const waBtn = document.getElementById('btn-whatsapp-join');
@@ -1927,7 +1928,7 @@
         });
     </script>
 
-    <script src="assets/mesure.js?v=202610310554"></script>
-    <script src="assets/cookies.js?v=202610310554"></script>
+    <script src="assets/mesure.js?v=202610312209"></script>
+    <script src="assets/cookies.js?v=202610312209"></script>
 </body>
 </html>

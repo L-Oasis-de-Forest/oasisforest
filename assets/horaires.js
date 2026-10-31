@@ -9,7 +9,7 @@
     const EQUIPES = {
         u3: {
             titre: 'Baby Futsal (U3-U7)',
-            seances: [{ day: 'SAM', type: 'Séance Éveil & Psychomotricité', time: '14:00 - 15:00', location: 'Bempt' }]
+            seances: [{ day: 'SAM', type: 'Entraînement', time: '14:00 - 15:00', location: 'Bempt' }]
         },
         u15_u17: {
             titre: 'Futsal (U15-U17)',
@@ -66,10 +66,10 @@
                     <div class="${fort ? 'bg-accent text-night' : 'bg-night/80 border-r border-white/5 text-slate-300'} flex flex-col items-center justify-center w-14 md:w-16 p-2 shrink-0">
                         <span class="text-xs font-black uppercase tracking-wider">${esc(it.day)}</span>
                     </div>
-                    <div class="p-3 md:p-4 flex-1 flex flex-col justify-center">
-                        <div class="flex justify-between items-start mb-1 gap-2">
+                    <div class="p-3 md:p-4 flex-1 min-w-0 flex flex-col justify-center">
+                        <div class="flex flex-wrap justify-between items-start mb-1 gap-x-3 gap-y-1">
                             <span class="font-bold text-white text-sm md:text-base flex items-center flex-wrap gap-x-2">${icone} ${esc(it.type)} ${badge}</span>
-                            <span class="text-accent font-black text-sm md:text-base shrink-0">${esc(it.time)}</span>
+                            <span class="text-accent font-black text-sm md:text-base whitespace-nowrap">${esc(it.time)}</span>
                         </div>
                         <span class="text-xs text-slate-400 flex items-center gap-1.5 mt-1"><i class="fas fa-map-marker-alt w-3 text-center opacity-70"></i> ${esc(it.location)}</span>
                     </div>
@@ -110,7 +110,7 @@
             const eq = EQUIPES[id];
             if (!eq) return;
             retour = bouton;
-            titre.textContent = `Horaires ${eq.titre}`;
+            titre.textContent = `Horaires ${eq.titre}`.replace(/-/g, '\u2011'); // tiret insécable : « (U3‑U7) » ne se coupe plus
             contenu.innerHTML = '<p class="text-slate-400 text-center py-4 font-light italic">Chargement…</p>';
             avert.innerHTML = '';
             abo.classList.add('hidden'); abo.classList.remove('flex');
