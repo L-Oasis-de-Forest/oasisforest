@@ -266,7 +266,7 @@ nouveau rapport fourni par le club.
   reste réservée aux sections.
 - **Compteur de vues** : « + 2 033 800 », sans « de », le « + » à la taille du nombre.
 - **Images d'aperçu de partage** (`og:image`, 1200 × 630, **JPG** — WhatsApp et Facebook
-  gèrent mal le WebP) : `img/partage.jpg` (équipe première) sur toutes les pages, sauf
+  gèrent mal le WebP) : `img/partage-equipe.jpg` (photo de l'équipe première de la page Équipes, recadrée sans filigrane, 31/10/2026 ; l'ancien `partage.jpg` n'est plus utilisé) sur toutes les pages, sauf
   `inscription.html` → `img/partage-inscription.jpg` (accolade des jeunes, demandée par le
   club pour les liens partagés aux familles). Générées par recadrage de `img/D85A3835.webp`
   et `img/IMG_8323.webp`.
