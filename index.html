@@ -85,10 +85,10 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310553">
-    <link rel="stylesheet" href="assets/polices.css?v=202610310553">
-    <script src="assets/tailwind-config.js?v=202610310553"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610310553">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310554">
+    <link rel="stylesheet" href="assets/polices.css?v=202610310554">
+    <script src="assets/tailwind-config.js?v=202610310554"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610310554">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
@@ -658,8 +658,8 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Slogan « Qui ne saute pas… » : chaque lettre saute en vague à chaque fois qu'il entre à l'écran
-        // (avec anti-spam, voir plus bas), puis individuellement au survol. Texte lisible tel quel par les lecteurs d'écran
+        // Slogan « Qui ne saute pas… » : chaque lettre saute en vague à chaque fois qu'il revient à l'écran,
+        // puis individuellement au survol. Texte lisible tel quel par les lecteurs d'écran
         // (copie masquée visuellement) ; animation coupée si le visiteur demande moins de mouvement.
         (function () {
             const slogan = document.getElementById('slogan-saut');
@@ -698,23 +698,18 @@
             slogan.append(lisible, visuel);
             decouper(visuel);
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-            // L'animation se rejoue à chaque passage devant le slogan, avec une sécurité anti-spam :
-            // au moins 6 s entre deux lectures et 5 lectures par minute au plus (un visiteur qui
-            // fait des allers-retours rapides ne déclenche pas une série de sauts).
-            const PAUSE_MS = 6000, MAX_PAR_MINUTE = 5;
-            let lectures = [];
-            const jouer = () => {
-                const t = Date.now();
-                lectures = lectures.filter((x) => t - x < 60000);
-                if (lectures.length && t - lectures[lectures.length - 1] < PAUSE_MS) return;
-                if (lectures.length >= MAX_PAR_MINUTE) return;
-                lectures.push(t);
-                slogan.classList.remove('saut-actif');
-                void slogan.offsetWidth; // relance l'animation CSS depuis le début
-                slogan.classList.add('saut-actif');
-            };
+            // Simple : dès que le slogan sort de l'écran, l'animation est remise à zéro ;
+            // quand il revient, les lettres sautent à nouveau.
             const obs = new IntersectionObserver((entrees) => {
-                if (entrees.some((e) => e.isIntersecting)) jouer();
+                entrees.forEach((e) => {
+                    if (e.isIntersecting) {
+                        slogan.classList.remove('saut-actif');
+                        void slogan.offsetWidth; // relance l'animation CSS depuis le début
+                        slogan.classList.add('saut-actif');
+                    } else {
+                        slogan.classList.remove('saut-actif');
+                    }
+                });
             }, { threshold: 0.6 });
             obs.observe(slogan);
         })();
@@ -1932,7 +1927,7 @@
         });
     </script>
 
-    <script src="assets/mesure.js?v=202610310553"></script>
-    <script src="assets/cookies.js?v=202610310553"></script>
+    <script src="assets/mesure.js?v=202610310554"></script>
+    <script src="assets/cookies.js?v=202610310554"></script>
 </body>
 </html>
