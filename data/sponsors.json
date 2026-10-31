@@ -15,34 +15,6 @@
       "principal": false,
       "demo": false,
       "hauteur": 20
-    },
-    {
-      "nom": "Emplacement partenaire disponible",
-      "logo": "/img/logo uof.svg",
-      "url": "",
-      "principal": false,
-      "demo": true
-    },
-    {
-      "nom": "Emplacement partenaire disponible",
-      "logo": "/img/logo uof.svg",
-      "url": "",
-      "principal": false,
-      "demo": true
-    },
-    {
-      "nom": "Emplacement partenaire disponible",
-      "logo": "/img/logo uof.svg",
-      "url": "",
-      "principal": false,
-      "demo": true
-    },
-    {
-      "nom": "Emplacement partenaire disponible",
-      "logo": "/img/logo uof.svg",
-      "url": "",
-      "principal": false,
-      "demo": true
     }
   ]
 }

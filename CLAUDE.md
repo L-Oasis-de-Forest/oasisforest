@@ -234,9 +234,13 @@ TikTok 602 / 197 400. **Ne jamais extrapoler ces chiffres** : toute mise à jour
 nouveau rapport fourni par le club.
 
 
-- **Le bandeau sponsors ne doit jamais être masqué.** Les 4 emplacements au logo du club
-  sont une vitrine assumée : ils montrent le rendu aux futurs sponsors. Voir le champ
-  `demo` dans `data/sponsors.json`.
+- **Bandeau sponsors** (31/10/2026) : les 4 emplacements d'aperçu au logo du club ont été retirés
+  de `data/sponsors.json` (demande du club) ; le bandeau ne montre que les vrais partenaires (ATA,
+  TELCOM), avec le logo du club **intercalé automatiquement après chaque sponsor** (`renderSponsors()`
+  d'`index.html` et `assets/commun.js`). Champ optionnel `hauteur` (px, 28 par défaut) pour
+  équilibrer des logos de formats différents. Le bandeau reste masqué si la liste est vide.
+- **En-tête desktop : logo seul**, sans le texte « Union Oasis Forest » (31/10/2026). Le pied de
+  page garde le nom.
 - **Pas de jalons d'histoire sur l'accueil** : la section `#club` de `index.html` n'est
   qu'un renvoi vers `a-propos.html`. Répéter les dates faisait doublon avec la ligne du temps.
 - **« Notre impact » vit sur `partenaires.html`**, pas sur `a-propos.html` : ces chiffres

@@ -126,7 +126,16 @@ async function renderSponsors() {
     pistes.forEach((piste) => {
         if (!piste) return;
         piste.innerHTML = '';
-        list.forEach((s) => piste.append(buildSponsor(s)));
+        // Le logo du club s'intercale après chaque sponsor (ATA, UOF, TELCOM, UOF…)
+        list.forEach((s) => {
+            piste.append(buildSponsor(s));
+            const sep = document.createElement('img');
+            sep.src = 'logo%20uof.svg';
+            sep.alt = '';
+            sep.setAttribute('aria-hidden', 'true');
+            sep.className = 'h-7 w-auto opacity-60';
+            piste.append(sep);
+        });
     });
 }
 
