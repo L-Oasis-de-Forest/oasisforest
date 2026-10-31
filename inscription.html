@@ -24,10 +24,10 @@
     <meta property="og:site_name" content="Union Oasis Forest">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310416">
-    <link rel="stylesheet" href="assets/polices.css?v=202610310416">
-    <script src="assets/tailwind-config.js?v=202610310416"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610310416">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310522">
+    <link rel="stylesheet" href="assets/polices.css?v=202610310522">
+    <script src="assets/tailwind-config.js?v=202610310522"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610310522">
     <style>
         /* Formulaire d'inscription — même grammaire que le reste du site : angles vifs,
            filets, capitales serrées. Styles propres à cette page, d'où leur place ici. */
@@ -130,7 +130,7 @@
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8">Inscrire<br>un jeune</h1>
             <div class="filet pt-6">
-                <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl leading-relaxed">Baby Futsal, U15 et U17 — saison 2026-2027. Cinq minutes, et la fiche arrive directement au club.</p>
+                <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl leading-relaxed">Baby Futsal, U15 et U17, saison 2026-2027. Cinq minutes, et la fiche arrive directement au club.</p>
             </div>
         </div>
     </header>
@@ -183,7 +183,7 @@
                 <fieldset class="filet pt-6">
                     <legend class="flex items-baseline gap-4 mb-8 w-full"><span class="numero text-2xl md:text-3xl">02</span><span class="titre-brut text-white text-xl md:text-2xl">Catégorie</span></legend>
                     <div class="grid sm:grid-cols-3 gap-3">
-                        <label class="choix"><input type="radio" name="categorie" value="baby" required><span>Baby Futsal<small>U3 — U7, éveil</small></span></label>
+                        <label class="choix"><input type="radio" name="categorie" value="baby" required><span>Baby Futsal<small>U3-U7, éveil</small></span></label>
                         <label class="choix"><input type="radio" name="categorie" value="u15"><span>Futsal U15<small>Moins de 15 ans</small></span></label>
                         <label class="choix"><input type="radio" name="categorie" value="u17"><span>Futsal U17<small>Moins de 17 ans</small></span></label>
                     </div>
@@ -253,11 +253,11 @@
                     <label class="fichier" for="preuve">
                         <input type="file" id="preuve" name="preuve" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf">
                         <span class="text-accent font-black text-xs tracking-[0.14em] uppercase shrink-0">Joindre</span>
-                        <span id="preuve-nom">Capture du virement ou reçu — image ou PDF, 8 Mo max.</span>
+                        <span id="preuve-nom">Capture du virement ou reçu : image ou PDF, 8 Mo max.</span>
                     </label>
                     <p class="text-slate-500 text-xs mt-4 leading-relaxed">
                         Vous pouvez aussi l'envoyer au club en <strong class="text-slate-300">message privé WhatsApp</strong>
-                        au +32 477 02 20 21 — jamais dans le groupe, une capture de virement contient vos coordonnées bancaires.
+                        au +32 477 02 20 21. Jamais dans le groupe : une capture de virement contient vos coordonnées bancaires.
                     </p>
                 </fieldset>
 
@@ -349,38 +349,25 @@
          domaine) sont exigées sur chaque page par la validation Google for Nonprofits. -->
     <footer class="filet relative z-10 mt-12 pt-12 pb-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8 mb-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+                <a href="index.html" aria-label="Union Oasis Forest - accueil" class="inline-flex items-center gap-4 group shrink-0">
+                    <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-6 w-auto opacity-90">
+                    <span class="font-black text-white text-sm tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
+                </a>
+                <nav aria-label="Pages du site" class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
+                    <a href="index.html" class="text-slate-400 hover:text-accent transition-colors">Accueil</a>
+                    <a href="a-propos.html" class="text-slate-400 hover:text-accent transition-colors">Le club</a>
+                    <a href="equipes.html" class="text-slate-400 hover:text-accent transition-colors">Nos équipes</a>
+                    <a href="galerie.html" class="text-slate-400 hover:text-accent transition-colors">Galerie</a>
+                    <a href="partenaires.html" class="text-slate-400 hover:text-accent transition-colors">Partenaires</a>
+                    <a href="contact.html" class="text-slate-400 hover:text-accent transition-colors">Contact</a>
+                </nav>
+            </div>
 
-                <div>
-                    <a href="index.html" aria-label="Union Oasis Forest - accueil" class="inline-flex items-center gap-4 group mb-5">
-                        <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-6 w-auto opacity-90">
-                        <span class="font-black text-white text-sm tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
-                    </a>
-                </div>
-
-                <div class="md:text-right">
-                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Pages</h2>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-400 hover:text-accent transition-colors">Accueil</a></li>
-                        <li><a href="a-propos.html" class="text-slate-400 hover:text-accent transition-colors">Le club</a></li>
-                        <li><a href="equipes.html" class="text-slate-400 hover:text-accent transition-colors">Nos équipes</a></li>
-                        <li><a href="galerie.html" class="text-slate-400 hover:text-accent transition-colors">Galerie</a></li>
-                        <li><a href="partenaires.html" class="text-slate-400 hover:text-accent transition-colors">Partenaires</a></li>
-                        <li><a href="contact.html" class="text-slate-400 hover:text-accent transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Contact</h2>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a></li>
-                        <li><a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">+32 477 02 20 21</a></li>
-                        <li class="flex gap-4 pt-2">
-                            <a href="https://www.instagram.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-accent transition-colors">Instagram</a>
-                            <a href="https://www.tiktok.com/@oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-accent transition-colors">TikTok</a>
-                            <a href="https://www.facebook.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-accent transition-colors">Facebook</a>
-                        </li>
-                    </ul>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-8 text-sm text-slate-400 mb-10">
+                <div class="flex flex-wrap gap-x-8 gap-y-2">
+                    <a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a>
+                    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">+32 477 02 20 21</a>
                 </div>
             </div>
 
@@ -392,7 +379,7 @@
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
                 <p class="text-[11px] text-slate-400">
-                    &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
+                    &copy; <span id="year"></span> L'Oasis de Forest ASBL. « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
                 </p>
@@ -407,8 +394,8 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610310416"></script>
-    <script src="assets/mesure.js?v=202610310416"></script>
+    <script src="assets/commun.js?v=202610310522"></script>
+    <script src="assets/mesure.js?v=202610310522"></script>
 
     <script>
         // Envoi vers l'outil admin (Worker Cloudflare), qui crée la fiche dans Notion.
@@ -629,6 +616,6 @@
             });
         })();
     </script>
-    <script src="assets/cookies.js?v=202610310416"></script>
+    <script src="assets/cookies.js?v=202610310522"></script>
 </body>
 </html>

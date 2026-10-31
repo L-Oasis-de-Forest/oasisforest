@@ -23,10 +23,10 @@
     <meta property="og:site_name" content="Union Oasis Forest">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310416">
-    <link rel="stylesheet" href="assets/polices.css?v=202610310416">
-    <script src="assets/tailwind-config.js?v=202610310416"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610310416">
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610310522">
+    <link rel="stylesheet" href="assets/polices.css?v=202610310522">
+    <script src="assets/tailwind-config.js?v=202610310522"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202610310522">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
@@ -85,80 +85,96 @@
 
 
     <main id="contenu">
-    <header class="pt-20 lg:pt-32 pb-8 relative z-10">
+    <header class="pt-20 lg:pt-40 pb-8 relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <p class="text-accent text-[11px] font-black tracking-[0.28em] uppercase mb-5">Nos équipes</p>
-            <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8">De 3 ans<br>à la Nationale</h1>
-            <div class="filet pt-6">
-                <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl leading-relaxed">Cinq groupes, une seule salle, le même encadrement.</p>
-            </div>
+            <h1 class="titre-brut text-white text-5xl md:text-7xl lg:text-8xl mb-8"><span class="font-semibold">De 3 ans</span> à la D2</h1>
+            <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl leading-relaxed">Pas de sélection à l'entrée. Cotisation au plus bas. Moyens réinvestis dans les salles et les équipements.</p>
         </div>
     </header>
 
-    <section class="pb-8 relative z-10">
+    <section class="relative z-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
                 <article id="baby" class="filet pt-8 pb-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-start reveal">
                     <div>
-                        <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">U3 — U7</p>
-                        <h2 class="titre-brut text-white text-3xl md:text-4xl mb-4">Baby Futsal</h2>
-                        <p class="text-slate-400 font-light leading-relaxed max-w-md">Initiation en immersion néerlandophone. Motricité, équilibre, vivre-ensemble et premiers contacts avec le ballon. Pas de compétition, parents bienvenus en salle.</p>
+                        <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">U3-U7</p>
+                        <h2 class="titre-brut text-white text-4xl md:text-6xl mb-4">Baby Futsal</h2>
+                        <p class="text-slate-400 text-base font-light leading-relaxed max-w-md">Initiation en immersion néerlandophone : motricité, équilibre et premiers contacts avec le ballon. Pas de compétition, parents bienvenus.</p>
                     </div>
-                    <table class="table-faits">
+                    <div class="lg:justify-self-end w-full lg:max-w-sm">
+                    <table class="table-faits table-equipes">
                         <tbody>
                             <tr><th>Âge</th><td>3 à 7 ans</td></tr>
-                            <tr><th>Cadre</th><td>Éveil, hors compétition</td></tr>
-                            <tr><th>Séance</th><td>Le samedi de 14h à 15h (Bempt)</td></tr>
+                            <tr><th>Horaires</th><td><button type="button" data-horaires="u3" class="lien-fleche text-white">Horaires</button></td></tr>
+                            <tr><th>Cotisation</th><td><span class="prix-vedette titre-brut text-4xl md:text-5xl leading-none">250&nbsp;€</span></td></tr>
                         </tbody>
                     </table>
+                    </div>
                 </article>
                 <article id="u15-u17" class="filet pt-8 pb-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-start reveal">
                     <div>
-                        <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">U15 — U17</p>
-                        <h2 class="titre-brut text-white text-3xl md:text-4xl mb-4">Futsal</h2>
-                        <p class="text-slate-400 font-light leading-relaxed max-w-md">L'âge où le futsal de compétition prend sa dimension : technique de semelle, jeu court, intelligence de déplacement et exécution en espace réduit.</p>
+                        <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">U15-U17</p>
+                        <h2 class="titre-brut text-white text-4xl md:text-6xl mb-4">Futsal</h2>
+                        <p class="text-slate-400 text-base font-light leading-relaxed max-w-md">Le futsal de compétition : technique de semelle, jeu court et intelligence de déplacement.</p>
                     </div>
-                    <table class="table-faits">
+                    <div class="lg:justify-self-end w-full lg:max-w-sm">
+                    <table class="table-faits table-equipes lg:max-w-sm lg:justify-self-end">
                         <tbody>
                             <tr><th>Âge</th><td>14 à 17 ans</td></tr>
-                            <tr><th>Cadre</th><td>Compétition et plateaux provinciaux</td></tr>
-                            <tr><th>U15</th><td>Entraînement le lundi à 18h (Bempt) · match le samedi à 16h, à domicile</td></tr>
-                            <tr><th>U17</th><td>Entraînement le vendredi à 18h (Bempt) · match le samedi à 15h</td></tr>
+                            <tr><th>Horaires</th><td><button type="button" data-horaires="u15_u17" class="lien-fleche text-white">Horaires</button></td></tr>
+                            <tr><th>Cotisation</th><td><span class="prix-vedette titre-brut text-4xl md:text-5xl leading-none">175&nbsp;€</span></td></tr>
                         </tbody>
                     </table>
+                    </div>
                 </article>
-                <article id="u21" class="filet pt-8 pb-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-start reveal">
+            </div>
+    </section>
+
+    <!-- Inscription / séance d'essai : bande inclinée, entre les équipes de jeunes et les équipes seniors. -->
+    <section class="relative z-10 my-8">
+        <div class="bande-diagonale border-y border-white/20 bg-white/[0.03]">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12 md:py-14 grid md:grid-cols-[1fr_2fr] gap-8 items-start">
+                <h2 class="titre-brut text-white text-3xl md:text-5xl">Venir<br>essayer</h2>
+                <div>
+                    <p class="text-slate-300 font-bold leading-relaxed mb-8 text-center">
+                        Inscriptions ouvertes toute la saison, dans la limite des places. Une séance
+                        d'essai est possible avant de s'engager : précise l'âge du joueur et l'équipe visée.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="https://wa.me/32477022021?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20inscriptions." target="_blank" rel="noopener noreferrer" class="bouton-plein bouton-whatsapp gap-2"><i class="fab fa-whatsapp text-xl" aria-hidden="true"></i>WhatsApp</a>
+                        <a href="mailto:inscriptions@oasisforest.be?subject=Demande%20d%27inscription" class="bouton-vide">inscriptions@oasisforest.be</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative z-10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <article id="u21" class="pt-8 pb-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-start reveal">
                     <div>
                         <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">U21</p>
-                        <h2 class="titre-brut text-white text-3xl md:text-4xl mb-4">Espoirs</h2>
-                        <p class="text-slate-400 font-light leading-relaxed max-w-md">L'antichambre de la Division 2. C'est par là que passent les joueurs formés au club avant d'intégrer l'équipe première.</p>
-                        <a href="https://www.rbfa.be/fr/club/9955/equipe/369102/calendrier" target="_blank" rel="noopener noreferrer" class="lien-action text-white mt-6">
-                            Calendrier officiel RBFA
-                        </a>
+                        <h2 class="titre-brut text-white text-4xl md:text-6xl mb-4">Espoirs</h2>
+                        <p class="text-slate-400 text-base font-light leading-relaxed max-w-md">L'antichambre de la D2, où se forment les joueurs avant l'équipe première.</p>
                     </div>
-                    <table class="table-faits">
+                    <table class="table-faits table-equipes lg:max-w-sm lg:justify-self-end">
                         <tbody>
                             <tr><th>Âge</th><td>18 à 21 ans</td></tr>
-                            <tr><th>Cadre</th><td>Compétition RBFA</td></tr>
-                            <tr><th>Entraînement</th><td>Le lundi à 19h30 (Centre sportif des Primeurs)</td></tr>
-                            <tr><th>Match</th><td>Le vendredi, voir le calendrier officiel</td></tr>
+                            <tr><th>Horaires</th><td><button type="button" data-horaires="u21" class="lien-fleche text-white">Horaires</button></td></tr>
                         </tbody>
                     </table>
                 </article>
                 <article id="div2" class="filet pt-8 pb-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-start reveal">
                     <div>
                         <p class="text-accent text-[11px] font-black tracking-[0.24em] uppercase mb-2">Division 2 Nationale</p>
-                        <h2 class="titre-brut text-white text-3xl md:text-4xl mb-4">Équipe première</h2>
-                        <p class="text-slate-400 font-light leading-relaxed max-w-md">L'équipe fanion, au niveau national de la RBFA. Haute intensité, forte dimension tactique, et une salle qui se remplit à chaque réception.</p>
-                        <a href="https://www.rbfa.be/fr/club/9955/equipe/369103/calendrier" target="_blank" rel="noopener noreferrer" class="lien-action text-white mt-6">
-                            Calendrier officiel RBFA
-                        </a>
+                        <h2 class="titre-brut text-white text-4xl md:text-6xl mb-4">Équipe première</h2>
+                        <p class="text-slate-400 text-base font-light leading-relaxed max-w-md">L'équipe fanion au niveau national : haute intensité et une salle pleine à chaque réception.</p>
                     </div>
-                    <table class="table-faits">
+                    <table class="table-faits table-equipes lg:max-w-sm lg:justify-self-end">
                         <tbody>
                             <tr><th>Catégorie</th><td>Seniors</td></tr>
-                            <tr><th>Cadre</th><td>Championnat national</td></tr>
-                            <tr><th>Horaires</th><td>Voir le calendrier officiel</td></tr>
+                            <tr><th>Horaires</th><td><button type="button" data-horaires="div2" class="lien-fleche text-white">Horaires</button></td></tr>
                         </tbody>
                     </table>
                 </article>
@@ -169,7 +185,7 @@
                      Masquée proprement si aucune photo n'est renseignée (voir renderEquipePremierePhoto()
                      dans assets/commun.js). .photo-murale : ombre + tilt au survol comme un polaroid,
                      sans cadre ni scotch (essayé, pas concluant sur une photo pleine largeur). -->
-                <div id="photo-equipe-premiere" class="hidden pb-10">
+                <div id="photo-equipe-premiere" class="hidden pt-8 md:pt-14">
                     <div class="photo-murale hover-tilt" data-tilt-max="6">
                         <img id="photo-equipe-premiere-img" src="" alt="L'équipe première" loading="lazy" class="w-full aspect-[4/3] sm:aspect-video object-cover">
                     </div>
@@ -178,11 +194,9 @@
     </section>
 
     <!-- Encart déplacé depuis l'accueil : sa place est en fin de liste, après la D2. -->
-    <section class="relative z-10 my-8">
+    <section class="relative z-10 mt-4 mb-8">
         <div class="bande-diagonale bg-accent">
             <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12 md:py-14">
-                <p class="text-night/70 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Résultats et classements</p>
-                <h2 class="titre-brut text-night text-3xl md:text-5xl mb-5 max-w-2xl">Les chiffres officiels sont chez la fédération</h2>
                 <p class="text-night/80 font-medium max-w-xl mb-8 leading-relaxed">
                     Classements en direct, calendriers et résultats de toutes nos équipes,
                     sur la plateforme de l'Union Belge.
@@ -194,23 +208,6 @@
         </div>
     </section>
 
-    <section class="py-16 relative z-10">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <div class="filet pt-10 grid md:grid-cols-2 gap-8 items-start reveal">
-                <h2 class="titre-brut text-white text-3xl md:text-5xl">Venir<br>essayer</h2>
-                <div>
-                    <p class="text-slate-400 font-light leading-relaxed mb-8">
-                        Inscriptions ouvertes toute la saison, dans la limite des places. Une séance
-                        d'essai est possible avant de s'engager — précise l'âge du joueur et l'équipe visée.
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://wa.me/32477022021?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20inscriptions." target="_blank" rel="noopener noreferrer" class="bouton-plein bouton-whatsapp">WhatsApp</a>
-                        <a href="mailto:inscriptions@oasisforest.be?subject=Demande%20d%27inscription" class="bouton-vide">inscriptions@oasisforest.be</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     </main>
 
@@ -219,38 +216,25 @@
          domaine) sont exigées sur chaque page par la validation Google for Nonprofits. -->
     <footer class="filet relative z-10 mt-12 pt-12 pb-10">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8 mb-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+                <a href="index.html" aria-label="Union Oasis Forest - accueil" class="inline-flex items-center gap-4 group shrink-0">
+                    <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-6 w-auto opacity-90">
+                    <span class="font-black text-white text-sm tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
+                </a>
+                <nav aria-label="Pages du site" class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
+                    <a href="index.html" class="text-slate-400 hover:text-accent transition-colors">Accueil</a>
+                    <a href="a-propos.html" class="text-slate-400 hover:text-accent transition-colors">Le club</a>
+                    <a href="equipes.html" class="text-slate-400 hover:text-accent transition-colors">Nos équipes</a>
+                    <a href="galerie.html" class="text-slate-400 hover:text-accent transition-colors">Galerie</a>
+                    <a href="partenaires.html" class="text-slate-400 hover:text-accent transition-colors">Partenaires</a>
+                    <a href="contact.html" class="text-slate-400 hover:text-accent transition-colors">Contact</a>
+                </nav>
+            </div>
 
-                <div>
-                    <a href="index.html" aria-label="Union Oasis Forest - accueil" class="inline-flex items-center gap-4 group mb-5">
-                        <img src="logo%20uof.svg" alt="" aria-hidden="true" class="h-6 w-auto opacity-90">
-                        <span class="font-black text-white text-sm tracking-[0.22em] uppercase leading-none group-hover:text-accent transition-colors">Union Oasis Forest</span>
-                    </a>
-                </div>
-
-                <div class="md:text-right">
-                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Pages</h2>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-400 hover:text-accent transition-colors">Accueil</a></li>
-                        <li><a href="a-propos.html" class="text-slate-400 hover:text-accent transition-colors">Le club</a></li>
-                        <li><a href="equipes.html" class="text-slate-400 hover:text-accent transition-colors">Nos équipes</a></li>
-                        <li><a href="galerie.html" class="text-slate-400 hover:text-accent transition-colors">Galerie</a></li>
-                        <li><a href="partenaires.html" class="text-slate-400 hover:text-accent transition-colors">Partenaires</a></li>
-                        <li><a href="contact.html" class="text-slate-400 hover:text-accent transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-slate-500 font-black text-[10px] tracking-[0.24em] uppercase mb-4">Contact</h2>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a></li>
-                        <li><a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">+32 477 02 20 21</a></li>
-                        <li class="flex gap-4 pt-2">
-                            <a href="https://www.instagram.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-accent transition-colors">Instagram</a>
-                            <a href="https://www.tiktok.com/@oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-accent transition-colors">TikTok</a>
-                            <a href="https://www.facebook.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-accent transition-colors">Facebook</a>
-                        </li>
-                    </ul>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-8 text-sm text-slate-400 mb-10">
+                <div class="flex flex-wrap gap-x-8 gap-y-2">
+                    <a href="mailto:union@oasisforest.be" class="hover:text-accent transition-colors">union@oasisforest.be</a>
+                    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">+32 477 02 20 21</a>
                 </div>
             </div>
 
@@ -262,7 +246,7 @@
                     <a href="https://oasisforest.be/" class="hover:text-slate-400 transition-colors">oasisforest.be</a>
                 </p>
                 <p class="text-[11px] text-slate-400">
-                    &copy; <span id="year"></span> L'Oasis de Forest ASBL — « Union Oasis Forest » est le nom sportif de l'association.
+                    &copy; <span id="year"></span> L'Oasis de Forest ASBL. « Union Oasis Forest » est le nom sportif de l'association.
                     · <a href="confidentialite.html" class="hover:text-slate-400 transition-colors">Mentions légales et confidentialité</a> ·
                     <a href="#" data-gerer-cookies class="hover:text-slate-400 transition-colors">Gérer les cookies</a>
                 </p>
@@ -277,8 +261,9 @@
         </span>
     </a>
 
-    <script src="assets/commun.js?v=202610310416"></script>
-    <script src="assets/mesure.js?v=202610310416"></script>
-    <script src="assets/cookies.js?v=202610310416"></script>
+    <script src="assets/commun.js?v=202610310522"></script>
+    <script src="assets/horaires.js?v=202610310522"></script>
+    <script src="assets/mesure.js?v=202610310522"></script>
+    <script src="assets/cookies.js?v=202610310522"></script>
 </body>
 </html>

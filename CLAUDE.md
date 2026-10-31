@@ -134,7 +134,7 @@ La grammaire visuelle a été refaite. Règles à respecter pour toute nouvelle 
 - **Les données factuelles vont dans `.table-faits`**, pas dans des grilles de cartes :
   plus dense, plus sérieux, et c'est ce que lit un validateur.
 - **`.bande-diagonale`** (fond accent incliné) est la seule rupture forte : réservée aux
-  appels à l'action de fin de page. Pas plus d'une par page.
+  appels à l'action de fin de page. Pas plus d'une par page, sauf `equipes.html` (31/10/2026) : « Venir essayer » (entre U15-U17 et U21) et « Résultats et classements » (fin de page), à la demande du club.
 - **Textes courts.** Une idée par paragraphe, jamais la même phrase sur deux pages. Le
   hero, les polaroids, le bleu accent et le fond sombre sont conservés tels quels.
 
@@ -463,7 +463,7 @@ réseaux sociaux, supports ; signature = nom complet tapé) et page `autorisatio
      (`modal.style.transition = 'none'`) et `user-select: none` sur `<body>`, sinon
      respectivement rattrapage saccadé et sélection de texte parasite en arrière-plan.
    - **Position tirée au hasard sur ordinateur** (`placerActuPopupAuHasard()`, ≥ 1024px) :
-     l'une des deux bandes latérales du hero, jamais sur le titre central, la navigation
+     l'une des deux bandes latérales du hero (3 fois sur 4 à droite, demande du club du 31/10/2026), jamais sur le titre central, la navigation
      ni le bouton WhatsApp. Sur téléphone, place fixe sous le bandeau sponsors.
    - **Lien « + d'infos » vers un autre site** (RBFA, billetterie…) : boîte de confirmation
      `#confirm-sortie` (« Vous quittez le site »), puis ouverture dans un nouvel onglet.

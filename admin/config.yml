@@ -74,7 +74,7 @@ collections:
                 widget: string
                 required: false
                 hint: "Doit correspondre exactement à la colonne « Valeur » d'un des filtres définis dans « Filtres galerie ». Sert deux fois : elle filtre la photo dans la galerie ET, si la valeur correspond à une équipe (d2, u21, u15_u17, u3), la photo illustre la fiche de cette équipe en polaroid. Laisser vide met la photo dans « Tout » uniquement."
-                pattern: ['^([a-z0-9_]+)?$', "Minuscules, chiffres et underscores uniquement (ex : d2, u17) — doit correspondre à une valeur de « Filtres galerie », ou rester vide."]
+                pattern: ['^([a-z0-9_]+)?$', "Minuscules, chiffres et underscores uniquement (ex : d2, u17), doit correspondre à une valeur de « Filtres galerie », ou rester vide."]
 
   - name: filtres-galerie
     label: Filtres galerie
@@ -133,7 +133,7 @@ collections:
           - name: evenements
             label: Événements
             widget: list
-            hint: "Un pop-up s'affiche sur le site à partir de X jours avant chaque événement, jusqu'à sa date. Une fois fermé par un visiteur, il ne réapparaît que le lendemain. N'ajouter que des échéances réelles (match, détection, portes ouvertes...) — jamais de fausse urgence."
+            hint: "Un pop-up s'affiche sur le site à partir de X jours avant chaque événement, jusqu'à sa date. Une fois fermé par un visiteur, il ne réapparaît que le lendemain. N'ajouter que des échéances réelles (match, détection, portes ouvertes...), jamais de fausse urgence."
             fields:
               - name: type
                 label: Type
