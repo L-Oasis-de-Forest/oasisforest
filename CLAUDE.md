@@ -236,8 +236,7 @@ nouveau rapport fourni par le club.
 
 - **Bandeau sponsors** (31/10/2026) : les 4 emplacements d'aperçu au logo du club ont été retirés
   de `data/sponsors.json` (demande du club) ; le bandeau ne montre que les vrais partenaires (ATA,
-  TELCOM), avec le logo du club **intercalé automatiquement après chaque sponsor** (`renderSponsors()`
-  d'`index.html` et `assets/commun.js`). Champ optionnel `hauteur` (px, 28 par défaut) pour
+  TELCOM), sans autre logo intercalé (le logo du club entre les sponsors a été retiré le 31/10/2026). Champ optionnel `hauteur` (px, 28 par défaut) pour
   équilibrer des logos de formats différents. Le bandeau reste masqué si la liste est vide.
 - **En-tête desktop : logo seul**, sans le texte « Union Oasis Forest » (31/10/2026). Le pied de
   page garde le nom.

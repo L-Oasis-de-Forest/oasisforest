@@ -557,3 +557,12 @@ body.modal-open { overflow: hidden; }
     pointer-events: none;
     background: linear-gradient(98deg, rgba(30, 58, 138, 0) 0%, rgba(30, 58, 138, 0.24) 5%, rgba(30, 58, 138, 0.18) 94%, rgba(30, 58, 138, 0) 100%);
 }
+
+/* Puce en petite flèche bleue (même tracé que .lien-fleche), pour les listes à points. */
+.puce-fleche {
+    flex: none;
+    width: 0.85em;
+    height: 0.85em;
+    margin-top: 0.4em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%2300c2ff' stroke-width='1.4' stroke-linecap='square'%3E%3Cpath d='M1 6h9M6.5 2.5L10 6 6.5 9.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
