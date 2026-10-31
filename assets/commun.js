@@ -126,7 +126,7 @@ async function renderSponsors() {
     pistes.forEach((piste) => {
         if (!piste) return;
         piste.innerHTML = '';
-        list.forEach((s) => piste.append(buildSponsor(s)));
+        [...list, ...list].forEach((s) => piste.append(buildSponsor(s))); // liste doublée : le bandeau est mieux rempli
     });
 }
 
