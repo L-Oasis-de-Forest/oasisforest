@@ -88,7 +88,7 @@
     <link rel="stylesheet" href="assets/fa/all.min.css?v=202610312209">
     <link rel="stylesheet" href="assets/polices.css?v=202610312209">
     <script src="assets/tailwind-config.js?v=202610312209"></script>
-    <link rel="stylesheet" href="assets/site.css?v=202610312209">
+    <link rel="stylesheet" href="assets/site.css?v=202611091228">
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-night focus:px-4 focus:py-2 focus:font-black focus:text-xs focus:uppercase">Aller au contenu</a>
@@ -333,7 +333,7 @@
                 <div>
                 <span class="numero text-3xl md:text-4xl block mb-4" style="-webkit-text-stroke-color: rgba(2,6,23,.35);">04</span>
                 <h2 class="titre-brut text-night text-3xl md:text-5xl mb-5 max-w-2xl">Soutenir le club</h2>
-                <p class="text-night/90 font-medium max-w-xl mb-0 leading-9">
+                <p class="text-night/90 font-medium max-w-2xl mb-0 leading-9" style="text-wrap: balance;">
                     Votre soutien offre à chacun de <mark class="surligne">nos jeunes</mark> le droit de jouer, de grandir
                     et de <mark class="surligne">rêver</mark>.<br>
                     Rejoignez la <mark class="surligne">passion</mark> du club et la <mark class="surligne">ferveur</mark> de ses supporters.
@@ -578,25 +578,28 @@
          après 10s sans interaction ; la fermeture n'est pas mémorisée, la pop-up revient à
          chaque arrivée sur l'accueil. Uniquement des échéances réelles issues du calendrier du
          club - jamais de fausse urgence (cf. CLAUDE.md, directive 2005/29/CE). -->
-    <div id="modal-popup-actu" class="fixed top-28 sm:top-32 right-4 z-[140] hidden w-[calc(100%-4rem)] max-w-[210px] sm:max-w-[260px] opacity-0 -translate-y-3 transition-all duration-300">
-        <div id="popup-actu-card" class="glass-panel border border-slate-400/30 rounded-2xl p-3 sm:p-4 relative shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-            <button id="btn-close-popup-actu" aria-label="Fermer" class="absolute top-3 right-3 w-8 h-8 bg-white/5 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+    <div id="modal-popup-actu" class="fixed top-28 sm:top-32 right-4 z-[140] hidden w-[calc(100%-2rem)] max-w-[300px] lg:max-w-[340px] opacity-0 -translate-y-3 transition-all duration-300">
+        <div id="popup-actu-card" class="glass-panel relative">
+            <button id="btn-close-popup-actu" aria-label="Fermer" class="absolute top-2 right-2 w-7 h-7 text-white/70 hover:text-white flex items-center justify-center transition-colors">
                 <i class="fas fa-times text-sm"></i>
+                <!-- Anneau de décompte : se remplit pendant les 10 s avant la fermeture automatique. -->
+                <svg class="actu-anneau" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5" pathLength="100"></circle></svg>
             </button>
-            <div class="flex items-start gap-3 pr-6">
-                <div id="popup-actu-icon" class="hidden sm:flex w-11 h-11 shrink-0 rounded-xl bg-accent/10 items-center justify-center text-lg text-accent">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <div class="min-w-0">
-                    <span id="popup-actu-badge" class="text-accent text-[10px] font-bold tracking-widest uppercase block mb-1"></span>
-                    <h3 id="popup-actu-titre" class="text-sm sm:text-lg font-black text-white mb-1 sm:mb-1.5 leading-tight"></h3>
-                    <p id="popup-actu-datetime" class="text-white font-bold text-xs mb-1 flex items-center gap-1.5"><i class="far fa-clock text-accent"></i> <span></span></p>
-                    <p id="popup-actu-lieu" class="text-slate-400 text-xs mb-2 flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-accent"></i> <span></span></p>
-                    <p id="popup-actu-desc" class="text-slate-300 text-xs leading-relaxed mb-3"></p>
-                    <!-- Discret, façon "liquid glass" : translucide/flouté (glass-panel),
-                         pas de dégradé plein ni de glow appuyé comme les CTA principaux. -->
-                    <a id="popup-actu-cta" href="#" target="_blank" rel="noopener noreferrer" class="hidden items-center justify-center gap-2 border border-white/20 hover:border-accent text-white/80 hover:text-accent font-black px-4 py-2.5 transition-colors text-[10px] uppercase tracking-[0.14em]"></a>
-                </div>
+            <!-- Bloc date accolé (ordinateur seulement) : style « billet de match ». -->
+            <div id="popup-actu-date" aria-hidden="true">
+                <span id="popup-actu-jour"></span>
+                <span id="popup-actu-num"></span>
+                <span id="popup-actu-mois"></span>
+            </div>
+            <div id="popup-actu-corps" class="min-w-0 flex-1">
+                <div id="popup-actu-icon" class="hidden"><i class="fas fa-bullhorn"></i></div>
+                <span id="popup-actu-badge" class="hidden text-accent text-[10px] font-bold tracking-widest uppercase mb-1"></span>
+                <h3 id="popup-actu-titre" style="text-wrap: balance;" class="text-sm lg:text-[15px] font-black text-white mb-3 leading-tight pr-7"></h3>
+                <p id="popup-actu-datetime" class="text-white font-bold text-xs mb-1 flex items-center gap-1.5"><i class="far fa-clock text-accent"></i> <span></span></p>
+                <p id="popup-actu-lieu" class="text-slate-400 text-xs mb-2 flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-accent"></i> <span></span></p>
+                <p id="popup-actu-desc" class="hidden lg:block text-slate-400 text-[11px] leading-relaxed mb-2"></p>
+                <!-- Lien texte accent, sans soulignement ni cadre. -->
+                <a id="popup-actu-cta" href="#" target="_blank" rel="noopener noreferrer" class="hidden w-fit text-accent font-black text-[11px] uppercase tracking-[0.14em] no-underline hover:text-white transition-colors"></a>
             </div>
         </div>
     </div>
@@ -1507,7 +1510,12 @@
 
         // Partagé avec makeActuPopupDraggable() : un déplacement de la fenêtre compte comme
         // une interaction et annule l'auto-fermeture, tout comme un close().
-        let actuAutoDismissTimer = null;
+        let actuAutoDismissTimer = null, actuHideTimer = null;
+        // Annule l'auto-fermeture et masque l'anneau de décompte.
+        function arreterActuTimer() {
+            clearTimeout(actuAutoDismissTimer);
+            document.getElementById('modal-popup-actu').classList.remove('actu-decompte');
+        }
 
         // Rend #modal-popup-actu déplaçable à la souris/au doigt, façon fenêtre de bureau.
         // Configuré une seule fois au chargement (l'élément reste dans le DOM, juste masqué/
@@ -1522,7 +1530,7 @@
             const onDown = (e) => {
                 if (e.target.closest('#btn-close-popup-actu, #popup-actu-cta')) return; // pas au clic sur ces contrôles
                 dragging = true;
-                clearTimeout(actuAutoDismissTimer); // déplacer = interaction, on annule l'auto-fermeture
+                arreterActuTimer(); // déplacer = interaction, on annule l'auto-fermeture
                 const point = e.touches ? e.touches[0] : e;
                 const rect = modal.getBoundingClientRect();
                 startX = point.clientX; startY = point.clientY;
@@ -1581,7 +1589,15 @@
             // evt.titre vient du CMS (texte libre, pas de contenu utilisateur non maîtrisé) :
             // même niveau de confiance que le reste du contenu déjà injecté ailleurs sur le site.
             document.getElementById('popup-actu-titre').innerHTML =
-                (evt.titre || '').replace(/VS (.+)$/i, 'VS <span class="text-accent">$1</span>');
+                (evt.titre || '')
+                    // Mots à trait d'union (MY-CARS) insécables : pas de coupure « MY- / CARS ».
+                    // Fait avant l'ajout du span accent, dont la classe contient elle-même un trait d'union.
+                    .replace(/[\p{L}\d]+(?:-[\p{L}\d]+)+/gu, '<span style="white-space:nowrap">$&</span>')
+                    .replace(/VS\s+(.+)$/i, 'VS<span class="text-accent block">$1</span>'); // « MATCH VS » puis l'équipe sur sa propre ligne
+            const dt = evt._date;
+            document.getElementById('popup-actu-jour').textContent = dt.toLocaleDateString('fr-BE', { weekday: 'short' }).replace('.', '').slice(0, 3).toUpperCase();
+            document.getElementById('popup-actu-num').textContent = dt.getDate();
+            document.getElementById('popup-actu-mois').textContent = dt.toLocaleDateString('fr-BE', { month: 'short' }).replace('.', '').toUpperCase();
             document.querySelector('#popup-actu-datetime span').textContent = formatEventDateTime(evt._date, evt._dayOnly, new Date());
 
             const lieuP = document.getElementById('popup-actu-lieu');
@@ -1608,7 +1624,7 @@
                     const url = new URL(cta.href, location.href);
                     if (url.host === location.host) return;
                     e.preventDefault();
-                    clearTimeout(actuAutoDismissTimer);
+                    arreterActuTimer();
                     confirmerSortie(url);
                 };
                 cta.classList.remove('hidden'); cta.classList.add('flex');
@@ -1617,9 +1633,9 @@
             }
 
             const close = () => {
-                clearTimeout(actuAutoDismissTimer);
+                arreterActuTimer();
                 modal.classList.remove('opacity-100'); modal.classList.add('opacity-0', '-translate-y-3');
-                setTimeout(() => modal.classList.add('hidden'), 300);
+                actuHideTimer = setTimeout(() => modal.classList.add('hidden'), 300);
             };
             document.getElementById('btn-close-popup-actu').addEventListener('click', close, { once: true });
             document.getElementById('popup-actu-cta').addEventListener('click', close, { once: true });
@@ -1628,10 +1644,16 @@
             // (delay=0 pour l'aperçu modérateur, voir previewActuPopup ci-dessous).
             // Notification non bloquante : disparaît seule après 10s sans interaction.
             setTimeout(() => {
+                // Réaffichage (clic sur le badge alors qu'une pop-up est déjà ouverte ou en train
+                // de se fermer) : on annule l'ancien décompte et la fermeture en cours, sinon la
+                // pop-up disparaît d'un coup au moment où l'ancien minuteur expire.
+                clearTimeout(actuAutoDismissTimer); clearTimeout(actuHideTimer);
                 modal.classList.remove('hidden');
                 placerActuPopupAuHasard(modal);
                 void modal.offsetWidth; // force reflow pour que la transition joue
                 modal.classList.remove('opacity-0', '-translate-y-3'); modal.classList.add('opacity-100');
+                modal.classList.remove('actu-decompte'); void modal.offsetWidth;
+                modal.classList.add('actu-decompte'); // relance l'anneau (10 s, comme le timer)
                 actuAutoDismissTimer = setTimeout(close, 10000);
             }, delay);
         }

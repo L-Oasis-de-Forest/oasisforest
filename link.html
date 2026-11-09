@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tous les liens de l'Union Oasis Forest : site, WhatsApp, Instagram, Facebook, TikTok et adresse de la salle à Forest.">
+    <meta name="robots" content="noindex, follow">
+    <title>Liens | Union Oasis Forest</title>
+    <link rel="canonical" href="https://oasisforest.be/link">
+
+    <link rel="icon" type="image/svg+xml" href="./logo%20uof.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oasisforest.be/link">
+    <meta property="og:title" content="Union Oasis Forest : nos liens">
+    <meta property="og:description" content="Site, WhatsApp, réseaux sociaux et adresse de la salle.">
+    <meta property="og:image" content="https://oasisforest.be/img/partage-equipe.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_BE">
+    <meta property="og:site_name" content="Union Oasis Forest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/fa/all.min.css?v=202610312209">
+    <link rel="stylesheet" href="assets/polices.css?v=202610312209">
+    <script src="assets/tailwind-config.js?v=202610312209"></script>
+    <link rel="stylesheet" href="assets/site.css?v=202611091228">
+    <style>
+        /* Logo du club teinté en jaune : le SVG est blanc, on s'en sert comme masque. */
+        .logo-jaune { width:52px; height:64px; background-color:#facc15;
+            -webkit-mask:url("logo%20uof.svg") center/contain no-repeat; mask:url("logo%20uof.svg") center/contain no-repeat; }
+        /* Animations discrètes (désactivées si le visiteur demande moins de mouvement) :
+           le logo flotte doucement, les boutons arrivent l'un après l'autre et se remplissent
+           d'un aplat jaune depuis la gauche au survol. */
+        .logo-jaune { animation: logo-flotte 4s ease-in-out infinite; }
+        @keyframes logo-flotte { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .btn-lien { animation: lien-entree .6s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 90ms + 250ms);
+            background-image: linear-gradient(#facc15, #facc15); background-repeat: no-repeat; background-position: left; background-size: 0% 100%;
+            transition: background-size .35s ease, color .35s ease, border-color .35s ease; }
+        .btn-lien:hover, .btn-lien:focus-visible { background-size: 100% 100%; color: #020617; border-color: #facc15; }
+        .btn-lien i { color: #fff; transition: color .35s ease; }
+        .btn-lien:hover i, .btn-lien:focus-visible i { color: #020617; }
+        @keyframes lien-entree { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) {
+            .logo-jaune, .btn-lien { animation: none; }
+            .btn-lien { transition: none; }
+        }
+        /* Formulaire déroulé : le jaune sert de couleur d'appoint (focus, flèche, bouton, liens). */
+        #ecrire .bouton-plein { background:#facc15; color:#020617; }
+        #ecrire .bouton-plein:hover { background:#eab308; }
+        /* Formulaire : mêmes styles que partenaires.html (angles vifs, capitales serrées). */
+        .champ-label { display:block; font-size:10px; font-weight:900; letter-spacing:.2em;
+            text-transform:uppercase; color:#94a3b8; margin-bottom:.5rem; }
+        .champ { width:100%; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.15);
+            color:#fff; padding:.8rem 1rem; font-size:1rem; border-radius:0; transition:border-color .2s; }
+        .champ:focus { outline:none; border-color:#facc15; }
+        .champ::placeholder { color:#475569; }
+        textarea.champ { resize:vertical; min-height:7rem; }
+        /* Liste « Objet » maison (le menu natif du navigateur est illisible et non stylable). */
+        .objet-btn { display:flex; align-items:center; justify-content:space-between; gap:1rem; text-align:left; cursor:pointer; }
+        .objet-btn .fleche { width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #facc15; transition:transform .2s; flex-shrink:0; }
+        .objet-btn[aria-expanded="true"] { border-color:#facc15; }
+        .objet-btn[aria-expanded="true"] .fleche { transform:rotate(180deg); }
+        .objet-liste { margin-top:.5rem; border:1px solid rgba(255,255,255,.15); background:rgba(2,6,23,.9); }
+        .objet-liste button { display:block; width:100%; text-align:left; padding:.95rem 1rem; font-size:.95rem; color:#e2e8f0;
+            border-bottom:1px solid rgba(255,255,255,.08); border-left:3px solid transparent; transition:background .2s, color .2s; }
+        .objet-liste li:last-child button { border-bottom:0; }
+        .objet-liste button:hover, .objet-liste button:focus-visible { background:#facc15; color:#020617; outline:none; }
+        .objet-liste button[aria-selected="true"] { border-left-color:#facc15; color:#facc15; font-weight:700; }
+        .objet-liste button[aria-selected="true"]:hover { color:#020617; }
+        /* Bouton « Nous écrire » : le signe passe de + à − quand le formulaire est ouvert. */
+        details > summary { list-style:none; }
+        details > summary::-webkit-details-marker { display:none; }
+        .signe-deroule::before { content:"+"; font-size:1.25rem; line-height:1; }
+        details[open] .signe-deroule::before { content:"\2212"; }
+        details[open] > summary { border-color:#facc15; color:#facc15; }
+        /* Champ piège anti-robots : hors écran, jamais vu ni tabulé par un humain. */
+        .piege { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    </style>
+</head>
+<body class="antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Fond animé -->
+    <div class="bg-glow">
+        <div class="blob-1 animate-blob"></div>
+        <div class="blob-2 animate-blob"></div>
+        <div class="blob-3 animate-blob"></div>
+    </div>
+
+    <!-- Page « liens » à mettre en description des réseaux : volontairement sans navigation,
+         hors sitemap et en noindex. Un lien par ligne, plein écran sur téléphone. -->
+    <main id="contenu" class="relative z-10 flex-1 w-full max-w-md mx-auto px-6 pt-12 pb-10">
+
+        <header class="text-center mb-10 reveal">
+            <div class="logo-jaune mx-auto mb-6" aria-hidden="true"></div>
+            <h1 class="titre-brut text-3xl" style="color:#facc15">Union Oasis Forest</h1>
+            <p class="text-slate-400 text-sm mt-2">Club de futsal · Forest, Bruxelles</p>
+        </header>
+
+        <!-- Hiérarchie : 1) les réseaux en grand (Instagram, Facebook, TikTok), 2) la salle (carte +
+             Waze/Maps), 3) le formulaire à dérouler. Le site est le sous-titre du nom ; WhatsApp est
+             le bouton flottant, comme sur le site. -->
+        <section aria-labelledby="lib-reseaux" class="reveal">
+            <h2 id="lib-reseaux" class="sr-only text-slate-400 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Suivre le club</h2>
+            <!-- Liens réseaux : navigation dans le même onglet (sans target="_blank") pour que iOS (liens
+                 universels) et Android (App Links) ouvrent l'appli Instagram / Facebook / TikTok si elle est
+                 installée, au lieu de Safari. Les schémas instagram:// sont évités : sans l'appli, iOS
+                 afficherait une erreur. -->
+            <div class="flex flex-col gap-3">
+                <a href="https://oasisforest.be/" data-track="Linktree - Site" style="--i:0" class="btn-lien mb-4 relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                    <i class="fas fa-globe absolute left-6 text-2xl" aria-hidden="true"></i>
+                    <span class="text-sm font-black tracking-[0.16em] uppercase">Site web</span>
+                </a>
+                <a href="https://www.instagram.com/oasisforestfutsal" rel="noopener" data-track="Linktree - Instagram" style="--i:1" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                    <i class="fab fa-instagram absolute left-6 text-2xl" aria-hidden="true"></i>
+                    <span class="text-sm font-black tracking-[0.16em] uppercase">Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/oasisforestfutsal" rel="noopener" data-track="Linktree - Facebook" style="--i:2" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                    <i class="fab fa-facebook-f absolute left-6 text-2xl" aria-hidden="true"></i>
+                    <span class="text-sm font-black tracking-[0.16em] uppercase">Facebook</span>
+                </a>
+                <a href="https://www.tiktok.com/@oasisforestfutsal" rel="noopener" data-track="Linktree - TikTok" style="--i:3" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                    <i class="fab fa-tiktok absolute left-6 text-2xl" aria-hidden="true"></i>
+                    <span class="text-sm font-black tracking-[0.16em] uppercase">TikTok</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Formulaire à dérouler : replié par défaut pour garder la page courte. -->
+        <details id="ecrire" class="mt-7 reveal">
+            <summary style="--i:4" class="btn-lien bouton-vide flex w-full justify-between cursor-pointer">
+                <span>Nous contacter</span>
+                <span class="signe-deroule" aria-hidden="true"></span>
+            </summary>
+            <form id="form-contact" class="pt-5 space-y-4" novalidate>
+                <input type="hidden" name="t0" id="c-t0" value="">
+                <div class="piege" aria-hidden="true">
+                    <label for="c-site-web">Ne pas remplir ce champ</label>
+                    <input type="text" id="c-site-web" name="site_web" tabindex="-1" autocomplete="off">
+                </div>
+                <div>
+                    <label class="champ-label" id="lib-objet" for="c-objet-btn">Objet</label>
+                    <input type="hidden" name="objet" id="c-objet" value="">
+                    <button type="button" id="c-objet-btn" class="champ objet-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="c-objet-liste">
+                        <span id="c-objet-label" class="text-slate-500">Choisir…</span>
+                        <span class="fleche" aria-hidden="true"></span>
+                    </button>
+                    <ul id="c-objet-liste" class="objet-liste hidden" role="listbox" aria-labelledby="lib-objet">
+                            <li><button type="button" role="option" aria-selected="false" data-v="baby">Baby Futsal (U3-U7)</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="u15">Futsal U15</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="u17">Futsal U17</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="u21">Futsal U21</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="sponsoring">Sponsoring et partenariat</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="media">Média et presse</button></li>
+                            <li><button type="button" role="option" aria-selected="false" data-v="autre">Autre demande</button></li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="champ-label" for="c-prenom">Prénom</label>
+                        <input class="champ" id="c-prenom" name="prenom" required maxlength="80" autocomplete="given-name">
+                    </div>
+                    <div>
+                        <label class="champ-label" for="c-nom">Nom</label>
+                        <input class="champ" id="c-nom" name="nom" required maxlength="80" autocomplete="family-name">
+                    </div>
+                </div>
+                <div>
+                    <label class="champ-label" for="c-email">E-mail</label>
+                    <input class="champ" type="email" id="c-email" name="email" required maxlength="120" autocomplete="email">
+                </div>
+                <div>
+                    <label class="champ-label" for="c-message">Message</label>
+                    <textarea class="champ" id="c-message" name="message" required maxlength="4000"></textarea>
+                </div>
+                <p id="c-erreur" class="hidden border-l-2 border-red-500 bg-red-500/10 text-red-200 text-sm px-4 py-3" role="alert"></p>
+                <button type="submit" id="c-envoyer" class="bouton-plein w-full justify-center">Envoyer</button>
+            </form>
+            <div id="c-merci" class="hidden border border-white/15 p-5 mt-5" tabindex="-1">
+                <p class="text-[11px] font-black tracking-[0.24em] uppercase mb-2" style="color:#facc15">Message envoyé</p>
+                <p class="text-white font-bold">Merci, c'est noté.</p>
+                <p class="text-slate-400 text-sm mt-1">Le club te répond par e-mail dès que possible.</p>
+            </div>
+        </details>
+
+        <section aria-labelledby="lib-salle" class="mt-10 reveal">
+            <h2 id="lib-salle" class="text-slate-400 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Nous trouver</h2>
+            <!-- Carte (capture de Google Maps, img/carte-salle.jpg) habillée comme l'ancien encart
+                 intégré : fiche d'adresse avec « Ouvrir dans Maps », mention Google en bas. Toute la
+                 carte est cliquable, la capture ne chargeant rien de Google. -->
+            <div id="map" class="group relative aspect-square w-full overflow-hidden border border-white/10 bg-night">
+                <a href="https://maps.google.com/?q=Bd+de+la+Deuxi%C3%A8me+Arm%C3%A9e+Britannique+600,+1190+Forest" target="_blank" rel="noopener noreferrer" data-track="Linktree - Google Maps (carte)" aria-label="Ouvrir la carte dans Google Maps" class="absolute inset-0 block">
+                    <img src="img/carte-salle.jpg" alt="Carte : complexe sportif, Bd. de la 2ème Armée Britannique 600, 1190 Forest" width="640" height="640" loading="lazy" class="w-full h-full object-cover">
+                </a>
+                <div class="absolute top-2 left-2 max-w-[80%] bg-[#202124]/95 p-3 shadow-lg" style="font-family: Roboto, Arial, sans-serif">
+                    <p class="text-white text-[13px] font-medium leading-snug">Bd de la Deuxième Armée Britannique 600</p>
+                    <p class="text-slate-400 text-[11px] mt-0.5">1190 Forest, Belgique</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <a href="https://maps.google.com/?q=Bd+de+la+Deuxi%C3%A8me+Arm%C3%A9e+Britannique+600,+1190+Forest" target="_blank" rel="noopener noreferrer" data-track="Linktree - Google Maps" class="inline-flex items-center gap-1.5 bg-[#4a80d9] text-white text-[12px] font-medium px-3 py-2 hover:bg-[#3b6cc0] transition-colors">
+                            Ouvrir dans Maps <i class="fas fa-up-right-from-square text-[10px]" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.waze.com/ul?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&navigate=yes" target="_blank" rel="noopener noreferrer" data-track="Linktree - Waze" class="inline-flex items-center gap-1.5 bg-[#33ccff] text-night text-[12px] font-medium px-3 py-2 hover:bg-[#1fb8eb] transition-colors">
+                            <i class="fab fa-waze" aria-hidden="true"></i> Waze
+                        </a>
+                    </div>
+                </div>
+                <p class="absolute bottom-0 inset-x-0 bg-black/60 text-slate-300 text-[10px] px-2 py-1 pointer-events-none" style="font-family: Roboto, Arial, sans-serif">Google · Données cartographiques ©2026 Google</p>
+                <!-- Animation d'origine : au survol (souris), un voile flouté apparaît avec les deux boutons
+                     d'itinéraire. pointer-events coupés au repos pour ne pas bloquer les liens de la fiche
+                     (et, au toucher, le tap ouvre directement Maps). -->
+                <div class="absolute inset-0 z-20 bg-night/80 flex flex-col items-center justify-center opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto transition-opacity duration-300 backdrop-blur-md gap-4">
+                    <h3 class="text-white font-black mb-2 tracking-[0.2em] uppercase text-xs">Ouvrir avec</h3>
+                    <a href="https://maps.google.com/?q=Bd+de+la+Deuxi%C3%A8me+Arm%C3%A9e+Britannique+600,+1190+Forest" target="_blank" rel="noopener noreferrer" data-track="Linktree - Google Maps" class="bg-white text-night font-black text-[11px] tracking-[0.14em] uppercase px-8 py-3.5 flex items-center gap-3 hover:scale-105 transition-transform w-60 justify-center">
+                        <i class="fab fa-google text-blue-500 text-base"></i> Google Maps
+                    </a>
+                    <a href="https://www.waze.com/ul?q=Bd%20de%20la%20Deuxi%C3%A8me%20Arm%C3%A9e%20Britannique%20600,%201190%20Forest&navigate=yes" target="_blank" rel="noopener noreferrer" data-track="Linktree - Waze" class="bg-[#33ccff] text-night font-black text-[11px] tracking-[0.14em] uppercase px-8 py-3.5 flex items-center gap-3 hover:scale-105 transition-transform w-60 justify-center">
+                        <i class="fab fa-waze text-base"></i> Waze
+                    </a>
+                </div>
+            </div>
+            <p class="text-slate-400 text-xs mt-3">Salle et entraînements : Bd. de la 2ème Armée Britannique 600, 1190 Forest</p>
+        </section>
+
+        <!-- Message au club : envoyé par l'outil admin (POST /api/contact) vers union@oasisforest.be,
+             mêmes garde-fous que le formulaire partenaires (champ piège, délai, plafond horaire). -->
+
+    </main>
+
+    <script>
+        (function () {
+            const API = ['localhost', '127.0.0.1'].includes(location.hostname)
+                ? 'http://localhost:8787/api/contact'
+                : 'https://oasisforest-admin-tool.tristederk.workers.dev/api/contact';
+            const form = document.getElementById('form-contact');
+            const erreur = document.getElementById('c-erreur');
+            const bouton = document.getElementById('c-envoyer');
+            const merci = document.getElementById('c-merci');
+            const texteBouton = bouton.textContent;
+            document.getElementById('c-t0').value = String(Date.now());
+            const objet = document.getElementById('c-objet');
+            const objetBtn = document.getElementById('c-objet-btn');
+            const objetLabel = document.getElementById('c-objet-label');
+            const objetListe = document.getElementById('c-objet-liste');
+
+            function basculerListe(ouvrir) {
+                objetListe.classList.toggle('hidden', !ouvrir);
+                objetBtn.setAttribute('aria-expanded', String(ouvrir));
+            }
+            objetBtn.addEventListener('click', () => basculerListe(objetListe.classList.contains('hidden')));
+            objetListe.addEventListener('click', (e) => {
+                const choix = e.target.closest('button[data-v]');
+                if (!choix) return;
+                objet.value = choix.dataset.v;
+                objetLabel.textContent = choix.textContent;
+                objetLabel.classList.remove('text-slate-500');
+                objetListe.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b === choix)));
+                basculerListe(false);
+                objetBtn.focus();
+            });
+            // Fermeture : clic ailleurs ou touche Échap.
+            document.addEventListener('click', (e) => { if (!e.target.closest('#c-objet-btn, #c-objet-liste')) basculerListe(false); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') basculerListe(false); });
+
+            function montrerErreur(message) {
+                erreur.textContent = message + ' Si le problème persiste, écris-nous sur WhatsApp au +32 477 02 20 21.';
+                erreur.classList.remove('hidden');
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                erreur.classList.add('hidden');
+                if (!objet.value) { montrerErreur("Choisis l'objet de ton message."); objetBtn.focus(); return; }
+                if (!form.reportValidity()) return;
+                bouton.disabled = true;
+                bouton.textContent = 'Envoi en cours…';
+                try {
+                    const res = await fetch(API, { method: 'POST', body: new FormData(form) });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok || !data.ok) throw new Error(data.erreur || 'Envoi impossible pour le moment.');
+                    form.classList.add('hidden');
+                    merci.classList.remove('hidden');
+                    merci.focus();
+                } catch (err) {
+                    montrerErreur(err.message || 'Envoi impossible pour le moment.');
+                } finally {
+                    bouton.disabled = false;
+                    bouton.textContent = texteBouton;
+                }
+            });
+        })();
+    </script>
+
+    <!-- Pied de page réduit à une phrase (page de liens, noindex) : dénomination légale, n° BCE,
+         siège et e-mail restent présents ; le lien cookies est conservé car la mesure d'audience
+         (mesure.js) est chargée ici aussi. -->
+    <footer class="relative z-10 pb-8">
+        <p class="max-w-md mx-auto px-6 text-center text-[11px] leading-relaxed text-slate-400">
+            L'Oasis de Forest ASBL · BCE 0867.614.619 · Rue du Croissant 85, 1190 Forest ·
+            <a href="mailto:union@oasisforest.be" class="hover:text-white transition-colors">union@oasisforest.be</a> ·
+            <a href="#" data-gerer-cookies class="hover:text-white transition-colors">Cookies</a>
+        </p>
+    </footer>
+
+    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" data-track="WhatsApp (flottant)" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-[#facc15] text-[#020617] w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:scale-110 hover:bg-[#eab308] hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 z-50 group" aria-label="Nous contacter sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="absolute right-[110%] top-1/2 -translate-y-1/2 bg-night text-white text-xs font-bold py-2.5 px-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-white/10 pointer-events-none shadow-xl">
+            Une question ? Discutons !
+        </span>
+    </a>
+
+    <script src="assets/commun.js?v=202610312209"></script>
+    <script src="assets/mesure.js?v=202610312209"></script>
+    <script src="assets/cookies.js?v=202610312209"></script>
+</body>
+</html>
