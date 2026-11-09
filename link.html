@@ -112,12 +112,11 @@
              le bouton flottant, comme sur le site. -->
         <section aria-labelledby="lib-reseaux" class="reveal">
             <h2 id="lib-reseaux" class="sr-only text-slate-400 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Suivre le club</h2>
-            <!-- Liens réseaux : nouvel onglet sur ordinateur. Sur téléphone, Instagram et Facebook sont
-                 ouverts par un script (voir plus bas) quand la page est dans le navigateur intégré d'Instagram/Facebook : il appelle l'appli SANS faire naviguer cette page :
-                 dans le navigateur intégré d'Instagram, naviguer vers instagram.com remplaçait /link et
-                 le lien de bio rouvrait ensuite le profil au lieu de la page. -->
+            <!-- Liens réseaux : liens normaux en nouvel onglet. Dans le navigateur intégré d'Instagram, ils
+                 ouvrent la page web du réseau (la fenêtre intégrée ignore les ouvertures d'appli par script,
+                 sauf Instagram, voir le script en bas de page). -->
             <div class="flex flex-col gap-3">
-                <a href="https://oasisforest.be/" data-track="Linktree - Site" style="--i:0" class="btn-lien mb-4 relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                <a href="https://oasisforest.be/" target="_blank" rel="noopener" data-track="Linktree - Site" style="--i:0" class="btn-lien mb-4 relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
                     <i class="fas fa-globe absolute left-6 text-2xl" aria-hidden="true"></i>
                     <span class="text-sm font-black tracking-[0.16em] uppercase">Site web</span>
                 </a>
@@ -237,62 +236,26 @@
     </main>
 
     <script>
-        // Navigateur intégré d'Instagram / Facebook (là d'où viennent les visiteurs du lien de bio) :
-        // un lien https y reste dans la fenêtre intégrée (page d'avertissement « Continuer vers ce
-        // site », chargement lent) et la fenêtre mémorise alors le réseau comme dernière page : le lien
-        // de bio rouvrait le réseau au lieu de /link. Règle : cette page ne doit jamais être remplacée.
-        //  1) Instagram et WhatsApp : l'appli est appelée directement par son schéma.
-        //  2) Facebook et TikTok : ouverture dans le navigateur PAR DÉFAUT du téléphone (Safari sur iOS via
-        //     x-safari-https, intent Android), où le lien universel lance l'appli si elle est installée.
-        //  3) Si rien ne s'est ouvert au bout de 1,5 s : nouvelle page via window.open.
-        // Hors navigateur intégré (Safari, Chrome, ordinateur), les liens normaux restent en place.
+        // Navigateur intégré d'Instagram / Facebook : les liens sont laissés NORMAUX (nouvel onglet), car
+        // les tentatives d'ouverture par script (x-safari, window.open, schémas fb:// et snssdk1233://)
+        // sont ignorées par cette fenêtre et laissaient les boutons sans effet. Seul Instagram tente
+        // son appli par schéma, avec repli sur le lien normal si rien ne s'est ouvert au bout de 1,2 s.
         (function () {
             const ua = navigator.userAgent;
             if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(ua)) return;
+            const lien = document.querySelector('[data-track="Linktree - Instagram"]');
+            if (!lien) return;
             const android = /Android/i.test(ua);
-            // Liens du bandeau sponsors : nouvelle page, pour ne pas remplacer /link dans la fenêtre intégrée.
-            const bandeau = document.getElementById('sponsors-marquee');
-            if (bandeau) bandeau.addEventListener('click', (e) => {
-                const a = e.target.closest('a[href]');
-                if (!a) return;
-                e.preventDefault();
-                window.open(a.href, '_blank', 'noopener');
-            });
-            const RESEAUX = {
-                'Linktree - Instagram': {
-                    web: 'https://www.instagram.com/oasisforestfutsal/',
-                    ios: 'instagram://user?username=oasisforestfutsal',
-                    android: 'intent://instagram.com/_u/oasisforestfutsal/#Intent;package=com.instagram.android;scheme=https;'
-                },
-                'Linktree - Facebook': { web: 'https://www.facebook.com/oasisforestfutsal', navigateurParDefaut: true },
-                'Linktree - TikTok': { web: 'https://www.tiktok.com/@oasisforestfutsal', navigateurParDefaut: true },
-                'WhatsApp (flottant)': {
-                    web: 'https://wa.me/32477022021',
-                    ios: 'whatsapp://send?phone=32477022021',
-                    android: 'intent://send/?phone=32477022021#Intent;package=com.whatsapp;scheme=whatsapp;'
+            const web = 'https://www.instagram.com/oasisforestfutsal/';
+            lien.addEventListener('click', (e) => {
+                e.preventDefault(); // la mesure (mesure.js) écoute le clic plus haut : elle part quand même
+                if (android) {
+                    location.href = 'intent://instagram.com/_u/oasisforestfutsal/#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
+                    return;
                 }
-            };
-            Object.keys(RESEAUX).forEach((nom) => {
-                const lien = document.querySelector('[data-track="' + nom + '"]');
-                const r = RESEAUX[nom];
-                if (!lien) return;
-                lien.addEventListener('click', (e) => {
-                    e.preventDefault(); // la mesure (mesure.js) écoute le clic plus haut : elle part quand même
-                    const t0 = Date.now();
-                    let cible;
-                    if (r.navigateurParDefaut) {
-                        cible = android
-                            ? 'intent://' + r.web.replace('https://', '') + '#Intent;scheme=https;end'
-                            : 'x-safari-' + r.web;
-                    } else {
-                        cible = android ? r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end' : r.ios;
-                    }
-                    location.href = cible;
-                    // Rien ne s'est ouvert (page toujours visible, pas de retour tardif) : nouvelle page web.
-                    setTimeout(() => {
-                        if (!document.hidden && Date.now() - t0 < 2500) window.open(r.web, '_blank', 'noopener');
-                    }, 1500);
-                });
+                const t0 = Date.now();
+                location.href = 'instagram://user?username=oasisforestfutsal';
+                setTimeout(() => { if (!document.hidden && Date.now() - t0 < 2500) location.href = web; }, 1200);
             });
         })();
     </script>
