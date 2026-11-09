@@ -90,9 +90,16 @@
         <div class="blob-3 animate-blob"></div>
     </div>
 
+    <!-- Bandeau sponsors (data/sponsors.json), rendu par commun.js. Masqué si la liste est vide.
+         Pas de navbar sur cette page : il est collé en haut quelle que soit la largeur. -->
+    <div id="sponsors-marquee" class="fixed top-0 h-12 w-full z-40 bg-black/70 backdrop-blur-md border-b border-white/10 py-2 flex overflow-hidden">
+        <div id="sponsors-track-1" class="flex animate-marquee min-w-full shrink-0 items-center justify-around gap-12 px-6"></div>
+        <div id="sponsors-track-2" class="flex animate-marquee min-w-full shrink-0 items-center justify-around gap-12 px-6" aria-hidden="true"></div>
+    </div>
+
     <!-- Page « liens » à mettre en description des réseaux : volontairement sans navigation,
          hors sitemap et en noindex. Un lien par ligne, plein écran sur téléphone. -->
-    <main id="contenu" class="relative z-10 flex-1 w-full max-w-md mx-auto px-6 pt-12 pb-10">
+    <main id="contenu" class="relative z-10 flex-1 w-full max-w-md mx-auto px-6 pt-24 pb-10">
 
         <header class="text-center mb-10 reveal">
             <div class="logo-jaune mx-auto mb-6" aria-hidden="true"></div>
@@ -232,31 +239,33 @@
     <script>
         // Navigateur intégré d'Instagram / Facebook (là d'où viennent les visiteurs du lien de bio) :
         // un lien https y reste dans la fenêtre intégrée (page d'avertissement « Continuer vers ce
-        // site », chargement lent) et, surtout, la fenêtre mémorise alors le réseau comme dernière page :
-        // le lien de bio rouvrait le réseau au lieu de /link. On ouvre donc l'appli directement par son
-        // schéma, SANS faire naviguer cette page et sans repli web (celui qui est dans ce navigateur a
-        // l'appli). Hors navigateur intégré (Safari, Chrome), les liens normaux ouvrent déjà l'appli.
+        // site », chargement lent) et la fenêtre mémorise alors le réseau comme dernière page : le lien
+        // de bio rouvrait le réseau au lieu de /link. Règle : cette page ne doit jamais être remplacée.
+        //  1) Instagram et WhatsApp : l'appli est appelée directement par son schéma.
+        //  2) Facebook et TikTok : ouverture dans le navigateur PAR DÉFAUT du téléphone (Safari sur iOS via
+        //     x-safari-https, intent Android), où le lien universel lance l'appli si elle est installée.
+        //  3) Si rien ne s'est ouvert au bout de 1,5 s : nouvelle page via window.open.
+        // Hors navigateur intégré (Safari, Chrome, ordinateur), les liens normaux restent en place.
         (function () {
             const ua = navigator.userAgent;
             if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(ua)) return;
             const android = /Android/i.test(ua);
-            const TIKTOK_ID = '7450130205509829654';
+            // Liens du bandeau sponsors : nouvelle page, pour ne pas remplacer /link dans la fenêtre intégrée.
+            const bandeau = document.getElementById('sponsors-marquee');
+            if (bandeau) bandeau.addEventListener('click', (e) => {
+                const a = e.target.closest('a[href]');
+                if (!a) return;
+                e.preventDefault();
+                window.open(a.href, '_blank', 'noopener');
+            });
             const RESEAUX = {
                 'Linktree - Instagram': {
                     web: 'https://www.instagram.com/oasisforestfutsal/',
                     ios: 'instagram://user?username=oasisforestfutsal',
                     android: 'intent://instagram.com/_u/oasisforestfutsal/#Intent;package=com.instagram.android;scheme=https;'
                 },
-                'Linktree - Facebook': {
-                    web: 'https://www.facebook.com/oasisforestfutsal',
-                    ios: 'fb://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal'),
-                    android: 'intent://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal') + '#Intent;package=com.facebook.katana;scheme=fb;'
-                },
-                'Linktree - TikTok': {
-                    web: 'https://www.tiktok.com/@oasisforestfutsal',
-                    ios: 'snssdk1233://user/profile/' + TIKTOK_ID,
-                    android: 'intent://user/profile/' + TIKTOK_ID + '#Intent;package=com.zhiliaoapp.musically;scheme=snssdk1233;'
-                },
+                'Linktree - Facebook': { web: 'https://www.facebook.com/oasisforestfutsal', navigateurParDefaut: true },
+                'Linktree - TikTok': { web: 'https://www.tiktok.com/@oasisforestfutsal', navigateurParDefaut: true },
                 'WhatsApp (flottant)': {
                     web: 'https://wa.me/32477022021',
                     ios: 'whatsapp://send?phone=32477022021',
@@ -269,8 +278,20 @@
                 if (!lien) return;
                 lien.addEventListener('click', (e) => {
                     e.preventDefault(); // la mesure (mesure.js) écoute le clic plus haut : elle part quand même
-                    // Android : repli automatique vers le web si l'appli est absente. iOS : schéma seul.
-                    location.href = android ? r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end' : r.ios;
+                    const t0 = Date.now();
+                    let cible;
+                    if (r.navigateurParDefaut) {
+                        cible = android
+                            ? 'intent://' + r.web.replace('https://', '') + '#Intent;scheme=https;end'
+                            : 'x-safari-' + r.web;
+                    } else {
+                        cible = android ? r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end' : r.ios;
+                    }
+                    location.href = cible;
+                    // Rien ne s'est ouvert (page toujours visible, pas de retour tardif) : nouvelle page web.
+                    setTimeout(() => {
+                        if (!document.hidden && Date.now() - t0 < 2500) window.open(r.web, '_blank', 'noopener');
+                    }, 1500);
                 });
             });
         })();
