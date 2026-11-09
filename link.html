@@ -106,7 +106,7 @@
         <section aria-labelledby="lib-reseaux" class="reveal">
             <h2 id="lib-reseaux" class="sr-only text-slate-400 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Suivre le club</h2>
             <!-- Liens réseaux : nouvel onglet sur ordinateur. Sur téléphone, Instagram et Facebook sont
-                 ouverts par un script (voir plus bas) qui appelle l'appli SANS faire naviguer cette page :
+                 ouverts par un script (voir plus bas) quand la page est dans le navigateur intégré d'Instagram/Facebook : il appelle l'appli SANS faire naviguer cette page :
                  dans le navigateur intégré d'Instagram, naviguer vers instagram.com remplaçait /link et
                  le lien de bio rouvrait ensuite le profil au lieu de la page. -->
             <div class="flex flex-col gap-3">
@@ -230,17 +230,17 @@
     </main>
 
     <script>
-        // Instagram et Facebook : sur téléphone, on ouvre l'appli sans quitter cette page (un lien
-        // normal ferait naviguer le navigateur intégré d'Instagram vers le profil, et le lien de bio
-        // rouvrirait ensuite le profil au lieu de /link).
-        // Android : lien « intent » avec repli automatique vers la page web si l'appli est absente.
-        // iOS : schéma de l'appli puis, si la page est toujours visible 1 s plus tard (appli absente
-        // ou refus), repli sur la page web. Ordinateur et TikTok : lien normal (nouvel onglet).
+        // Navigateur intégré d'Instagram / Facebook (là d'où viennent les visiteurs du lien de bio) :
+        // un lien https y reste dans la fenêtre intégrée (page d'avertissement « Continuer vers ce
+        // site », chargement lent) et, surtout, la fenêtre mémorise alors le réseau comme dernière page :
+        // le lien de bio rouvrait le réseau au lieu de /link. On ouvre donc l'appli directement par son
+        // schéma, SANS faire naviguer cette page et sans repli web (celui qui est dans ce navigateur a
+        // l'appli). Hors navigateur intégré (Safari, Chrome), les liens normaux ouvrent déjà l'appli.
         (function () {
             const ua = navigator.userAgent;
+            if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(ua)) return;
             const android = /Android/i.test(ua);
-            const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
-            if (!android && !ios) return;
+            const TIKTOK_ID = '7450130205509829654';
             const RESEAUX = {
                 'Linktree - Instagram': {
                     web: 'https://www.instagram.com/oasisforestfutsal/',
@@ -251,6 +251,16 @@
                     web: 'https://www.facebook.com/oasisforestfutsal',
                     ios: 'fb://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal'),
                     android: 'intent://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal') + '#Intent;package=com.facebook.katana;scheme=fb;'
+                },
+                'Linktree - TikTok': {
+                    web: 'https://www.tiktok.com/@oasisforestfutsal',
+                    ios: 'snssdk1233://user/profile/' + TIKTOK_ID,
+                    android: 'intent://user/profile/' + TIKTOK_ID + '#Intent;package=com.zhiliaoapp.musically;scheme=snssdk1233;'
+                },
+                'WhatsApp (flottant)': {
+                    web: 'https://wa.me/32477022021',
+                    ios: 'whatsapp://send?phone=32477022021',
+                    android: 'intent://send/?phone=32477022021#Intent;package=com.whatsapp;scheme=whatsapp;'
                 }
             };
             Object.keys(RESEAUX).forEach((nom) => {
@@ -259,13 +269,8 @@
                 if (!lien) return;
                 lien.addEventListener('click', (e) => {
                     e.preventDefault(); // la mesure (mesure.js) écoute le clic plus haut : elle part quand même
-                    if (android) {
-                        location.href = r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end';
-                        return;
-                    }
-                    const t0 = Date.now();
-                    location.href = r.ios;
-                    setTimeout(() => { if (!document.hidden && Date.now() - t0 < 2500) location.href = r.web; }, 1000);
+                    // Android : repli automatique vers le web si l'appli est absente. iOS : schéma seul.
+                    location.href = android ? r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end' : r.ios;
                 });
             });
         })();
