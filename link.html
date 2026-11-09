@@ -105,24 +105,24 @@
              le bouton flottant, comme sur le site. -->
         <section aria-labelledby="lib-reseaux" class="reveal">
             <h2 id="lib-reseaux" class="sr-only text-slate-400 text-[11px] font-black tracking-[0.24em] uppercase mb-3">Suivre le club</h2>
-            <!-- Liens réseaux : navigation dans le même onglet (sans target="_blank") pour que iOS (liens
-                 universels) et Android (App Links) ouvrent l'appli Instagram / Facebook / TikTok si elle est
-                 installée, au lieu de Safari. Les schémas instagram:// sont évités : sans l'appli, iOS
-                 afficherait une erreur. -->
+            <!-- Liens réseaux : nouvel onglet sur ordinateur. Sur téléphone, Instagram et Facebook sont
+                 ouverts par un script (voir plus bas) qui appelle l'appli SANS faire naviguer cette page :
+                 dans le navigateur intégré d'Instagram, naviguer vers instagram.com remplaçait /link et
+                 le lien de bio rouvrait ensuite le profil au lieu de la page. -->
             <div class="flex flex-col gap-3">
                 <a href="https://oasisforest.be/" data-track="Linktree - Site" style="--i:0" class="btn-lien mb-4 relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
                     <i class="fas fa-globe absolute left-6 text-2xl" aria-hidden="true"></i>
                     <span class="text-sm font-black tracking-[0.16em] uppercase">Site web</span>
                 </a>
-                <a href="https://www.instagram.com/oasisforestfutsal" rel="noopener" data-track="Linktree - Instagram" style="--i:1" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                <a href="https://www.instagram.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" data-track="Linktree - Instagram" style="--i:1" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
                     <i class="fab fa-instagram absolute left-6 text-2xl" aria-hidden="true"></i>
                     <span class="text-sm font-black tracking-[0.16em] uppercase">Instagram</span>
                 </a>
-                <a href="https://www.facebook.com/oasisforestfutsal" rel="noopener" data-track="Linktree - Facebook" style="--i:2" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                <a href="https://www.facebook.com/oasisforestfutsal" target="_blank" rel="noopener noreferrer" data-track="Linktree - Facebook" style="--i:2" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
                     <i class="fab fa-facebook-f absolute left-6 text-2xl" aria-hidden="true"></i>
                     <span class="text-sm font-black tracking-[0.16em] uppercase">Facebook</span>
                 </a>
-                <a href="https://www.tiktok.com/@oasisforestfutsal" rel="noopener" data-track="Linktree - TikTok" style="--i:3" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
+                <a href="https://www.tiktok.com/@oasisforestfutsal" target="_blank" rel="noopener noreferrer" data-track="Linktree - TikTok" style="--i:3" class="btn-lien relative flex items-center justify-center py-5 border border-white/20 bg-white/[0.03] text-white">
                     <i class="fab fa-tiktok absolute left-6 text-2xl" aria-hidden="true"></i>
                     <span class="text-sm font-black tracking-[0.16em] uppercase">TikTok</span>
                 </a>
@@ -230,6 +230,47 @@
     </main>
 
     <script>
+        // Instagram et Facebook : sur téléphone, on ouvre l'appli sans quitter cette page (un lien
+        // normal ferait naviguer le navigateur intégré d'Instagram vers le profil, et le lien de bio
+        // rouvrirait ensuite le profil au lieu de /link).
+        // Android : lien « intent » avec repli automatique vers la page web si l'appli est absente.
+        // iOS : schéma de l'appli puis, si la page est toujours visible 1 s plus tard (appli absente
+        // ou refus), repli sur la page web. Ordinateur et TikTok : lien normal (nouvel onglet).
+        (function () {
+            const ua = navigator.userAgent;
+            const android = /Android/i.test(ua);
+            const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+            if (!android && !ios) return;
+            const RESEAUX = {
+                'Linktree - Instagram': {
+                    web: 'https://www.instagram.com/oasisforestfutsal/',
+                    ios: 'instagram://user?username=oasisforestfutsal',
+                    android: 'intent://instagram.com/_u/oasisforestfutsal/#Intent;package=com.instagram.android;scheme=https;'
+                },
+                'Linktree - Facebook': {
+                    web: 'https://www.facebook.com/oasisforestfutsal',
+                    ios: 'fb://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal'),
+                    android: 'intent://facewebmodal/f?href=' + encodeURIComponent('https://www.facebook.com/oasisforestfutsal') + '#Intent;package=com.facebook.katana;scheme=fb;'
+                }
+            };
+            Object.keys(RESEAUX).forEach((nom) => {
+                const lien = document.querySelector('[data-track="' + nom + '"]');
+                const r = RESEAUX[nom];
+                if (!lien) return;
+                lien.addEventListener('click', (e) => {
+                    e.preventDefault(); // la mesure (mesure.js) écoute le clic plus haut : elle part quand même
+                    if (android) {
+                        location.href = r.android + 'S.browser_fallback_url=' + encodeURIComponent(r.web) + ';end';
+                        return;
+                    }
+                    const t0 = Date.now();
+                    location.href = r.ios;
+                    setTimeout(() => { if (!document.hidden && Date.now() - t0 < 2500) location.href = r.web; }, 1000);
+                });
+            });
+        })();
+    </script>
+    <script>
         (function () {
             const API = ['localhost', '127.0.0.1'].includes(location.hostname)
                 ? 'http://localhost:8787/api/contact'
@@ -294,17 +335,16 @@
     </script>
 
     <!-- Pied de page réduit à une phrase (page de liens, noindex) : dénomination légale, n° BCE,
-         siège et e-mail restent présents ; le lien cookies est conservé car la mesure d'audience
-         (mesure.js) est chargée ici aussi. -->
+         siège et e-mail restent présents ; pas de bandeau cookies ici : la page ne dépose aucun cookie (carte en image, mesure d'audience
+         anonyme sans cookie via mesure.js). -->
     <footer class="relative z-10 pb-8">
         <p class="max-w-md mx-auto px-6 text-center text-[11px] leading-relaxed text-slate-400">
             L'Oasis de Forest ASBL · BCE 0867.614.619 · Rue du Croissant 85, 1190 Forest ·
-            <a href="mailto:union@oasisforest.be" class="hover:text-white transition-colors">union@oasisforest.be</a> ·
-            <a href="#" data-gerer-cookies class="hover:text-white transition-colors">Cookies</a>
+            <a href="mailto:union@oasisforest.be" class="hover:text-white transition-colors">union@oasisforest.be</a>
         </p>
     </footer>
 
-    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" data-track="WhatsApp (flottant)" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-[#facc15] text-[#020617] w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:scale-110 hover:bg-[#eab308] hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 z-50 group" aria-label="Nous contacter sur WhatsApp">
+    <a href="https://wa.me/32477022021" target="_blank" rel="noopener noreferrer" data-track="WhatsApp (flottant)" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-[#25D366] text-white w-[4.5rem] h-[4.5rem] md:w-20 md:h-20 rounded-full flex items-center justify-center text-[2.6rem] shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:bg-[#20bd5a] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300 z-50 group" aria-label="Nous contacter sur WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="absolute right-[110%] top-1/2 -translate-y-1/2 bg-night text-white text-xs font-bold py-2.5 px-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-white/10 pointer-events-none shadow-xl">
             Une question ? Discutons !
@@ -313,6 +353,5 @@
 
     <script src="assets/commun.js?v=202610312209"></script>
     <script src="assets/mesure.js?v=202610312209"></script>
-    <script src="assets/cookies.js?v=202610312209"></script>
 </body>
 </html>
